@@ -1,0 +1,120 @@
+
+  apply plugin: 'java'
+  sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+buildscript {
+    ext {
+        dl4j_version = "1.0.0-beta4"
+        
+    }
+    repositories {
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "https://mvnrepository.com/artifact/org.apache.spark/spark-core"}
+        mavenCentral()
+    }
+    
+}
+
+
+apply plugin: "application"
+
+
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.12.8' 
+
+    compile "org.deeplearning4j:deeplearning4j-core:${dl4j_version}"
+    compile "org.nd4j:nd4j-native-platform:${dl4j_version}"
+    compile "org.apache.spark:spark-core_2.12:2.4.3"
+    compile "org.apache.spark:spark-sql_2.12:2.4.3"
+    compile "org.apache.spark:spark-mllib_2.12:2.4.3"
+    compile fileTree(dir: "lib", include: "*.jar")
+    compile fileTree(dir: "src", include: "*.class")
+    compile fileTree(dir: "target/scala-2.12/classes/", include: "*.class")
+     
+  
+}
+
+
+sourceSets {
+    main {
+      
+        java {
+             
+            
+             Set<File> classpathFiles =  fileTree (dir : "lib", include: "*.jar").getFiles()+new File("target/scala-2.12/classes")
+            compileClasspath =  files(classpathFiles)
+           
+             
+            srcDir "src"
+    }
+    
+}
+}
+
+
+sourceSets.main.java.srcDirs = ['src']
+
+
+ jar  {
+    baseName="ScalaLab"
+    includeEmptyDirs = false
+    mainClassName="scalaExec.scalaLab.scalaLab"
+    
+     
+           
+
+           
+           def classpathfiles = fileTree (dir : "lib", include: "*.jar").getFiles().name
+           def appendedLib = classpathfiles.collect { item -> "lib/"+item}.join(' ')
+           
+    manifest {
+        attributes('Class-Path': appendedLib,
+'Main-Class':'scalaExec.scalaLab.scalaLab')
+    }
+
+def extensions = [ 'class', 'ssci',  'gif', 'scala', 'htm', 'html', 'jpg', 'plots-gsci',  'png', 'properties',  'txt', 'weka-gsci', 'javaSGT', 'wav-gsci'] 
+
+   
+   from(sourceSets.main.java.srcDirs) {
+      extensions.each({extension -> include "**/*.${extension}"})
+   }
+
+    
+ }
+
+
+task fatJar(type: Jar) {
+
+    baseName="ScalaLab"
+    includeEmptyDirs = false
+    mainClassName="scalaExec.scalaLab.scalaLab"
+    zip64=true
+
+    manifest {
+      attributes(
+'Main-Class':'scalaExec.scalaLab.scalaLab')
+    }
+  
+  
+   
+  classifier = 'all'
+    
+  
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } 
+    }
+ {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+
+   
+    with jar
+   
+}

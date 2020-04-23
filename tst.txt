@@ -1,0 +1,14 @@
+var n=4000
+
+var x=rand(n,n)
+tic
+var xx = x*x
+var tm=toc
+
+
+var x0=rand0(n,n)
+tic
+var xx0 = x0*x0
+var tmb=toc
+
+

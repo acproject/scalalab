@@ -1,0 +1,13 @@
+
+
+var kk=99
+
+System.out.println(kk)
+
+
+var x = new double[2000]
+
+for (int k=0; k<2000; k++) 
+   x[k] = Math.sin(k);
+   
+scalaSci.math.plot.plot.plot(x)

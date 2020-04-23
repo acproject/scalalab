@@ -1,0 +1,55 @@
+
+
+// wrapping with more friendly user interface the class INDArray
+// this example runs only with Deeplearning4j version of ScalaLab, i.e. ScalaLabDL4j.jar
+class ND4jMat  (x: RichDouble2DArray)  {
+ import org.nd4j.linalg.api.ndarray.INDArray
+ import org.nd4j.linalg.factory.Nd4j
+ import org.nd4j.linalg.util.ArrayUtil
+  import java.util.Arrays
+
+ 
+  var x1d = scalaSci.RichDouble2DArray.oneDDoubleArray(x)
+
+  var data = Nd4j.create( x1d, Array( x.Nrows, x.Ncols) )
+  
+  
+   def this(xp: INDArray) = this(xp.toDoubleMatrix )
+
+  
+  def + ( that: INDArray) =  new ND4jMat(data.add(that))
+  
+  
+  def - ( that: INDArray) =  new ND4jMat(data.sub(that))
+  
+  
+  
+  def * ( that: INDArray) =  new ND4jMat(data.mmul(that))
+ 
+ 
+  def + ( that: ND4jMat):ND4jMat = this + that.data
+  
+  
+  def - ( that: ND4jMat):ND4jMat =  this - that.data
+  
+  
+  
+  def * ( that: ND4jMat):ND4jMat = this * that.data
+ 
+  //def - ( that: ND4jMat) = this.sub(that)
+ // def * ( that: ND4jMat) = this.mmul(that)
+
+ }
+ 
+ 
+ 
+ var N=4000
+ 
+ var x = rand(N,N)
+ 
+ var nx = new ND4jMat(x)
+ 
+ 
+ tic
+ var nxnx = nx * nx   // multiply fast using ND4j 
+ var tm=toc  
