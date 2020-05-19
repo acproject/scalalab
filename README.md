@@ -51,7 +51,7 @@ https://smile.amazon.com/Scientific-Computing-ScalaLab-Java-Platform/dp/36598459
 
 ## Installation
 
-`ScalaLab is developed with JDK8, so make sure to have JDK8 installed.`
+`This version of ScalaLab is developed with JDK8, so make sure to have JDK8 installed.`
 
 `To install and execute ScalaLab, download the .zip , and unzip it.  `
 

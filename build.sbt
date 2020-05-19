@@ -4,7 +4,7 @@ version             := ""
 
 organization        := ""
 
-scalaVersion        := "2.12.10" 
+scalaVersion        := "2.12.11" 
 
 javaOptions   ++= Seq("-Xss", "2M", "-Xmx", "4G")
 
@@ -34,6 +34,7 @@ libraryDependencies += "org.bytedeco.javacpp-presets" % "openblas" % "0.2.20-1.4
 libraryDependencies += "org.deeplearning4j" % "deeplearning4j-core" % "1.0.0-beta5"
 
 
+unmanagedJars in Compile ++= (file("./libScala") * "*.jar").classpath
   
 val dependentJarDirectory = settingKey[File]("location of the unpacked jars")
 dependentJarDirectory := target.value / "dependent-jars"
@@ -131,20 +132,18 @@ runUberJar := {
   }
   
   
-  
-  
-val classPathlib  = new File("./lib").listFiles.filter(_.isFile)
+ 
+ 
+val scalaLibsJars = new File("./libScala").listFiles.filter(_.isFile)
+     .filter(_.getName.endsWith(".jar")).toSeq
+ 
+val scalalabLibsJars  = new File("./lib").listFiles.filter(_.isFile)
     .filter(_.getName.endsWith(".jar")).toSeq
-
     
-
-  
-  
-  
-val classPathlibextraLib  = new File("./extralib").listFiles.filter(_.isFile)
+val extraLibJars = new File("./extralib").listFiles.filter(_.isFile)
     .filter(_.getName.endsWith(".jar")).toSeq
 
-val classPath = classPathlib ++ classPathlibextraLib
+val classPath =   scalaLibsJars ++ scalalabLibsJars  ++ extraLibJars
     
 packageOptions += Package.ManifestAttributes(
   "Class-Path" -> classPath.mkString(" "),
@@ -153,19 +152,6 @@ packageOptions += Package.ManifestAttributes(
    
 
 
-
-
-
-
-
-  
-    
-    
-
-packageOptions += Package.ManifestAttributes(
-  "Class-Path" -> classPath.mkString(" "),
-  "Main-Class" -> "scalaExec.scalaLab.scalaLab"
-)
    
 
 

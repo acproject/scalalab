@@ -1,8 +1,0 @@
-2019-01-02 13:41:24,479 - [INFO] - from org.nd4j.linalg.factory.Nd4jBackend in scala-execution-context-global-29
-                
-Loaded [CpuBackend] backend
-
-2019-01-02 13:54:57,159 - [INFO] - from org.nd4j.linalg.factory.Nd4jBackend in scala-execution-context-global-36
-                
-Loaded [CpuBackend] backend
-
