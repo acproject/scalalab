@@ -42,7 +42,7 @@ public class GlobalValues
 {
 
     
-    static public   String  scalalabBuildVersion = "26-June-2020"; 
+    static public   String  scalalabBuildVersion = "18-July-2020"; 
    
     static public boolean createNewInterpreterOnToggleLibraries = false; // controls whether to create a new interpreter on library switching along with a new classloader
     																	 // or to simply execute the proper import statements in order to wsitch libraries
