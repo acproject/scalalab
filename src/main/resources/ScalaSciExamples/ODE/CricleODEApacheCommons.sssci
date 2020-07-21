@@ -1,8 +1,19 @@
 
+        import _root_.scalaSci.Vec;
+        import _root_.scalaSci.Matrix ; 
+        import _root_.scalaSci.Vec._ ; 
+        import _root_.scalaSci.RichNumber; 
+        import _root_.scalaSci.Matrix._ ; 
+        import _root_.scalaSci.RichDouble1DArray ; 
+        import _root_.scalaSci.RichDouble2DArray ;
+        import _root_.scalaSci.RichDouble1DArray._ ; 
+        import _root_.scalaSci.RichDouble2DArray._ ;
+        import _root_.scalaSci.CommonMaths.Mat ; 
+        import _root_.scalaSci.CommonMaths.Mat._ ; 
+        import _root_.scalaSci.CommonMaths.StaticMathsCommonMaths._ ; 
+        
 
-ApacheCommonsNew  // import the Apache Commons new version
-
-close all
+close("all")
 
 class CircleODE(c: Array[Double], omega: Double) extends AnyRef with   FirstOrderDifferentialEquations  {
   

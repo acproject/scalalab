@@ -5,7 +5,7 @@ import  org.apache.commons.math.ode.nonstiff._
 
 // integrate using Apache Common Routines
 
-close all
+close("all")
 
 class CircleODE(c: Array[Double], omega: Double) extends AnyRef with   FirstOrderDifferentialEquations  {
   
