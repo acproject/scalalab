@@ -7,7 +7,6 @@ import javax.swing.{ AbstractAction, Box, JComponent, JEditorPane, JLabel, JPane
 import ScrollPaneConstants._
 
 import jsyntaxpane.{ DefaultSyntaxKit, SyntaxDocument }
-import scala.tools.nsc.interpreter.Parsed
 import scalaExec.Interpreter.GlobalValues
 import scalaExec.gui.AutoCompletionFrame
 import tools.nsc.{ ConsoleWriter, Interpreter => NewLinePrintWriter,Settings }

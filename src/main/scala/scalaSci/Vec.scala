@@ -1,6 +1,10 @@
 
 package scalaSci
 
+
+import scala.language.postfixOps
+
+
 // a class that implements "Vector" functionality. Data are kept as a simple one-dimensional Java array
 class Vec( n: Int)  extends  no.uib.cipr.matrix.AbstractVector(n)
     {

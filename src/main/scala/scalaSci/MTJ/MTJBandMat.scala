@@ -8,6 +8,7 @@ import scalaSci.Vec
 import scalaSci.math.LinearAlgebra.LinearAlgebra
 import scalaSci.math.array.DoubleArray
 
+import scala.language.postfixOps
 import java.lang.Math._
 
  // n: matrix is nXn

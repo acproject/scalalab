@@ -13,6 +13,8 @@ import org.ejml.alg.dense.decomposition.chol._
 import org.ejml.alg.dense.decomposition.qr._
 import org.ejml.alg.dense.linsol.qr._
 
+
+import scala.language.postfixOps
 import scala._
 import scala.collection.generic._
 import scalaSci.Vec

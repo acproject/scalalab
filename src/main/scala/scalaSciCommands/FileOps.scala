@@ -11,7 +11,6 @@ import java.util.Enumeration
 import java.util.Locale
 import java.util.Vector
 import scala.Option
-import scala.tools.cmd.Instance
 import scala.tools.nsc.io.Directory
 
 object FileOps {

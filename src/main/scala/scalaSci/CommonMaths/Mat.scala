@@ -7,6 +7,7 @@ import scalaSci.RichDouble1DArray
 import scalaSci.Vec
 
 
+import scala.language.postfixOps
 
 // this class performs a higher level interface to the Apache Common Maths,
 // Array2DRowRealMatrix class

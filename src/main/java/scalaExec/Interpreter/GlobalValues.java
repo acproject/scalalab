@@ -42,10 +42,8 @@ public class GlobalValues
 {
 
     
-    static public   String  scalalabBuildVersion = "18-July-2020"; 
+    static public   String  scalalabBuildVersion = "21 July 2020";
    
-    static public boolean createNewInterpreterOnToggleLibraries = false; // controls whether to create a new interpreter on library switching along with a new classloader
-    																	 // or to simply execute the proper import statements in order to wsitch libraries
     static public ScalaInterpreterPane globalInterpreterPane;  // the interpreter pane object which is the main interface to the Scala interpreter
     static public Vector <String> interpreterClassPathComponents = new Vector<>();  // the class path components of the main interpreter
     
@@ -62,7 +60,7 @@ public class GlobalValues
          
     static public JFrame toolbarFrame;  // the toolbar frame
     
-    static public boolean ScalaLabInInit = false;  // used to avoid some Swing component repaints during initialization
+    static public boolean ScalaLabInInit = false;  // used to avoid some Swing component repaints duting initialization
     
     // ScalaLab utilizes the following two editors for editing code, the jsyntaxPane being the default editor
     static public JEditorPane editorPane; // the jsyntaxPane based editor
@@ -135,8 +133,6 @@ public class GlobalValues
     
     static public Font defaultTextFont = new Font("DejaVu Sans Mono", Font.PLAIN, 14);     
    
-    static public Font minorTextFont = new Font("Arial", Font.PLAIN, 10);  // marks a not so important menu item
-    
      // some variables used to implement code completion
    static public boolean completionIsForSyntaxPane = true; //  controls if the jsyntaxpane or the rsyntaxarea editor triggered the completion
    static public JFrame completionFrame;  // the open completion Frame, it is used in order to dispose it with ESC
@@ -250,7 +246,6 @@ public class GlobalValues
    static public double scalarData;
    static public Hashtable<String, Double> scalarValuesFromMatlab = new Hashtable<String, Double>();
    static public Hashtable<String, double[][]> arrayValuesFromMatlab = new Hashtable<String, double[][]>();
-   
    
    static public String [] cellStrings;
   
@@ -463,9 +458,7 @@ public class GlobalValues
             "import java.text.DecimalFormat \n"+
             "import System.out._ \n"+
             
-            "import _root_.cfor.CforSyntax._\n"+
-             "import _root_.cifor.CiforSyntax._\n"+
-          
+             
             "import _root_.Do._ \n"+
             
             "import _root_.scalaSci.math.plot.canvas._; \n"+

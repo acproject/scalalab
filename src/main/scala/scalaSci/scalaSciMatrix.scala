@@ -13,6 +13,8 @@ import scalaExec.Interpreter.GlobalValues
 import java.util.concurrent.Future
 import edu.emory.mathcs.utils.ConcurrencyUtils
 
+
+import scala.language.postfixOps
 // specificMatrix is the type of the matrix for which the trait is mixed-in,
 // in order to define the functionality, e.g. scalaSci.Mat or scalaSci.EJML.Mat
 trait  scalaSciMatrix[specificMatrix]  {

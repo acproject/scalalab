@@ -22,6 +22,7 @@ import scalaSci.math.LinearAlgebra.LinearAlgebra
 import scalaSci.math.array.DoubleArray
 
 
+import scala.language.postfixOps
 
 // allows static methods of ScalaSci's mathematical objects (e.g. Mat) to be conveniently available,
 // e.g. sin(m) instead of scalaSci.EJML.Mat.sin(m)

@@ -51,7 +51,7 @@ https://smile.amazon.com/Scientific-Computing-ScalaLab-Java-Platform/dp/36598459
 
 ## Installation
 
-`This version of ScalaLab is developed with JDK8, so make sure to have JDK8 installed.`
+`ScalaLab is developed with JDK8, so make sure to have JDK8 installed.`
 
 `To install and execute ScalaLab, download the .zip , and unzip it.  `
 
@@ -60,7 +60,6 @@ https://smile.amazon.com/Scientific-Computing-ScalaLab-Java-Platform/dp/36598459
 `Then execute the appropriate .bat script for Windows or the corresponding .sh script for UNIX users. The script configures the java.library.path and some JVM parameters.`
 
 
-`ScalaLab can be build using the Scala IDE for Eclipse by placing all the sources within the project's source folder and by specifying the library dependencies on all the jars of the lib folder. Below we describe the process of building ScalaLab with the standard sbt tool.`
 
 `To build ScalaLab with SBT:`
 
@@ -82,18 +81,6 @@ https://smile.amazon.com/Scientific-Computing-ScalaLab-Java-Platform/dp/36598459
 `In order to compile and package ScalaLab with sbt, you should set the variable SBT_OPTS="-Xmx1536M  -Xss13M" `
 
 `The UNIX script runSbt.sh accomplishes that, but for Windows you should set the variable using the Control Panel.`
-
-`ScalaLab started to support the efficient ND4j Java Multidimensional arrays library. Also, with ND4j at the fat far ScalaLab file, the DeepLearning4j efficienty Java library is included.  To build a fat jar file that supports these additional libraries, type: `
-
-`createUberJar` 
-
-`within sbt. This will build the ScalaLabDL4j.jar within the "target" folder.`
-
-`The fat jar ScalaLabDL4j.jar can be executed with the corresponding DL4j* scripts for each platform.`
-
-`Also a prebuild ScalaLabDL4j.jar file can be downloaded from: `
-
-`https://sourceforge.net/projects/scalalab/files/?source=navbar`
 
 
 `Also, in order to run the produced .jar executable from the sbt build,

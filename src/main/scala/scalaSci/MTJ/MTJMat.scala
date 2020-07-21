@@ -9,7 +9,7 @@ import scalaSci.Vec
 import scalaSci.math.LinearAlgebra.LinearAlgebra
 import scalaSci.math.array.DoubleArray
 
-
+import scala.language.postfixOps
 // this class wraps the Matrix Toolkits for Java (MTJ) library 
 class Mat( Nin: Int,  Min: Int) extends AnyRef with scalaSci.scalaSciMatrix[scalaSci.MTJ.Mat]  {
   

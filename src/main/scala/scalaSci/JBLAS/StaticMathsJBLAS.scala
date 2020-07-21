@@ -7,6 +7,8 @@ import org.jblas.DoubleMatrix._
 import org.jblas.DoubleMatrix
 import org.jblas.ComplexDoubleMatrix
 
+
+import scala.language.postfixOps
 import scalaSci.Vec
 import scalaSci.math.LinearAlgebra.LinearAlgebra
 import scalaSci.math.array.DoubleArray

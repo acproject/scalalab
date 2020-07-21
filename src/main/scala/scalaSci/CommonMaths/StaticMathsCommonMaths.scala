@@ -1,6 +1,8 @@
 
 package scalaSci.CommonMaths
 
+
+import scala.language.postfixOps
 import scalaExec.Interpreter.GlobalValues
 import scalaSci.Matrix
 import scalaSci.RichDouble2DArray

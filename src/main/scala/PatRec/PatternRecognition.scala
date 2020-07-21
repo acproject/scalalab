@@ -4,6 +4,7 @@ import org.apache.commons.math.linear.Array2DRowRealMatrix
 import org.apache.commons.math.random.CorrelatedRandomVectorGenerator
 import org.apache.commons.math.random.GaussianRandomGenerator
 import org.apache.commons.math.random.JDKRandomGenerator
+import scala.language.postfixOps
 
 
 import _root_.scalaSci.StaticMaths._

@@ -7,14 +7,7 @@ import org.jblas.DoubleMatrix;
 public class JBLASNativeJavaInterface {
 
     //  Computes the eigenvalues of a general matrix.
-
-    /*
-val N=30
-val x = Rand(N,N)
-val  evals = scalaSci.JBLAS.JBLASNativeJavaInterface.jblas_eigenvalues(x)
-*/
-
-    public static ComplexDoubleMatrix jblas_eigenvalues(double [][]dM) {
+public static ComplexDoubleMatrix jblas_eigenvalues(double [][]dM) {
     return org.jblas.Eigen.eigenvalues(new DoubleMatrix(dM));
 }
 
@@ -24,13 +17,6 @@ val  evals = scalaSci.JBLAS.JBLASNativeJavaInterface.jblas_eigenvalues(x)
    //   returns an array of ComplexDoubleMatrix objects containing the eigenvectors
    //          stored as the columns of the first matrix, and the eigenvalues as the
    //         diagonal elements of the second matrix.
-   
-   /*
-val N=30
-val x = Rand(N,N)
-val  evecs = scalaSci.JBLAS.JBLASNativeJavaInterface.jblas_eigenvectors(x)
-*/
-
 public static ComplexDoubleMatrix[]  jblas_eigenvectors(double [][]dM) {
     return org.jblas.Eigen.eigenvectors(new DoubleMatrix(dM));
 }

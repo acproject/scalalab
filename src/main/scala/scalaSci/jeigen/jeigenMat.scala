@@ -11,6 +11,8 @@ import Jama._
 import jeigen.DenseMatrix
 import jeigen.Shortcuts._
 
+
+import scala.language.postfixOps
 import scalaSci.Vec
 import scalaSci.RichDouble1DArray
 import scalaSci.RichDouble2DArray

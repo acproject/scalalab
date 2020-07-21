@@ -21,6 +21,7 @@ import scalaSci.Vec
 import scalaSci.math.LinearAlgebra.LinearAlgebra
 import scalaSci.math.array.DoubleArray
 
+import scala.language.postfixOps
 // implements a high-level interface to the fast JBLAS library
 class Mat(var da: Array[Array[Double]])  extends AnyRef with scalaSci.scalaSciMatrix[scalaSci.JBLAS.Mat]  { 
     

@@ -17,6 +17,7 @@ import scalaSci.math.array.DoubleArray
 import  no.uib.cipr.matrix._ 
 
 
+import scala.language.postfixOps
 
 // allows static methods of ScalaSci's mathematical objects (e.g. Mat) to be conveniently available,
 // e.g. sin(m) instead of scalaSci.MTJ.Mat.sin(m)

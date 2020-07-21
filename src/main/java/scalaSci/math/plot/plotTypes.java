@@ -16,7 +16,6 @@ import static scalaSci.math.plot.ComplexArrayPlots.*;
 // The FrameView class represents plotting frame objects similar to Matlab figures.
 // They can contain a rectangular grid of subplot objects.
 
-import scalaSci.math.plot.JavaFX.javaFXPlotLine;
 
 import static scalaSci.math.plot.plot.*;
 import scalaSci.math.plot.render.AbstractDrawer;

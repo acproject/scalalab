@@ -10,6 +10,8 @@ import scalaSci.math.array.DoubleArray
 import java.util._
 import Jama._
 
+
+import scala.language.postfixOps
 // for the fast JBLAS based routines
 import org.jblas.DoubleMatrix._ 
 import org.jblas.DoubleMatrix

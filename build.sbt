@@ -4,38 +4,43 @@ version             := ""
 
 organization        := ""
 
-scalaVersion        := "2.12.12" 
+scalaVersion        := "2.13.3" 
 
-javaOptions   ++= Seq("-Xss", "2M", "-Xmx", "4G")
+javaOptions   ++= Seq("-Xss", "4M", "-Xmx", "8G")
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
 
-scalacOptions ++= Seq("-deprecation", "-unchecked", "-opt:l:inline",
- "-opt:l:inline", "closure-invocations", "l:method")
+scalacOptions ++= Seq("-deprecation", "-unchecked",
+"closure-invocations", "l:method", "-target:jvm-1.8")
+
 
 description         := "A MATLAB-like environment)"
 
+unmanagedJars in Compile ++= (file("./libScala") * "*.jar").classpath
+
+unmanagedJars in Compile ++= (file("./extralib") * "*.jar").classpath
+
 exportJars := true
+
+
 classpathTypes += "maven-plugin"
 
-libraryDependencies += "org.nd4j" % "nd4j-native" % "1.0.0-beta5" classifier "" classifier "linux-x86_64"
+libraryDependencies += "org.nd4j" % "nd4j-native" % "1.0.0-beta6" classifier "" classifier "linux-x86_64"
 libraryDependencies += "org.bytedeco.javacpp-presets" % "openblas" % "0.2.20-1.4.1" classifier "" classifier "linux-x86_64"
 
 
-libraryDependencies += "org.nd4j" % "nd4j-native" % "1.0.0-beta5" classifier "" classifier "windows-x86_64"
+libraryDependencies += "org.nd4j" % "nd4j-native" % "1.0.0-beta6" classifier "" classifier "windows-x86_64"
 libraryDependencies += "org.bytedeco.javacpp-presets" % "openblas" % "0.2.20-1.4.1" classifier "" classifier "windows-x86_64"
 
 
-libraryDependencies += "org.nd4j" % "nd4j-native" % "1.0.0-beta5" classifier "" classifier "macosx-x86_64"
+libraryDependencies += "org.nd4j" % "nd4j-native" % "1.0.0-beta6" classifier "" classifier "macosx-x86_64"
 libraryDependencies += "org.bytedeco.javacpp-presets" % "openblas" % "0.2.20-1.4.1" classifier "" classifier "macosx-x86_64"
 
 
-libraryDependencies += "org.deeplearning4j" % "deeplearning4j-core" % "1.0.0-beta5"
+libraryDependencies += "org.deeplearning4j" % "deeplearning4j-core" % "1.0.0-beta6"
 
 
-unmanagedJars in Compile ++= (file("./libScala") * "*.jar").classpath
-  
 val dependentJarDirectory = settingKey[File]("location of the unpacked jars")
 dependentJarDirectory := target.value / "dependent-jars"
 
@@ -145,6 +150,8 @@ val extraLibJars = new File("./extralib").listFiles.filter(_.isFile)
 
 val classPath =   scalaLibsJars ++ scalalabLibsJars  ++ extraLibJars
     
+    
+
 packageOptions += Package.ManifestAttributes(
   "Class-Path" -> classPath.mkString(" "),
   "Main-Class" -> "scalaExec.scalaLab.scalaLab"
@@ -152,6 +159,11 @@ packageOptions += Package.ManifestAttributes(
    
 
 
-   
+  
+//packageOptions += Package.ManifestAttributes(
 
+  //"Class-Path" ->  (Compile / dependencyClasspath).value.files.mkString(" "),
+  //"Main-Class" -> "scalaExec.scalaLab.scalaLab"
+//)
+   
 

@@ -29,7 +29,6 @@ import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXEnvironment;
 import scala.Function0;
 import scala.Option;
-import scala.tools.cmd.Instance;
 import scala.reflect.io.Directory;
 import scalaSci.help.PDFHelpFrame;
 

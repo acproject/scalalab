@@ -1,4 +1,4 @@
-    
+  
       /*
  * This code is adapted from: 
  *  ScalaInterpreterPane.scala
@@ -29,7 +29,12 @@ import javax.swing.{ AbstractAction, Box, JComponent, JEditorPane, JLabel, JPane
 import ScrollPaneConstants._
 
 
-import tools.nsc.interpreter.{Results, PresentationCompilerCompleter, NamedParam, IMain}
+import tools.nsc.interpreter.{Results, NamedParam, IMain}
+
+import scala.tools.nsc.interpreter.{IMain, Repl, ReplCore}
+import scala.tools.nsc.interpreter.shell.{ILoop, ReplReporterImpl, ShellConfig}
+import scala.tools.nsc.reporters.Reporter
+
 
 import jsyntaxpane.{ DefaultSyntaxKit, SyntaxDocument }
 
@@ -50,7 +55,6 @@ import scala.concurrent._
 import ExecutionContext.Implicits.global
 
 object ScalaInterpreterPaneGlobals {
-    var completer: PresentationCompilerCompleter = null   // the completer class of the Scala Interpreter on which some completion services are based
     var defaultImportsProcessed = false    // default imports have been processed by the interpreter
     var defaultCursor = scalaExec.Interpreter.GlobalValues.editorPane.getCursor
     var lastResult = scala.tools.nsc.interpreter.Results.Success    // last result evalutaed by the Scala interpreter
@@ -168,7 +172,7 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
        
   def getInterpreter = scalaExec.Interpreter.GlobalValues.globalInterpreter   // returns the Scala interpreter instance
 
-  // append the basic paths to the ScalaLab classpath
+  
   def appendBasicPathsToSettings(settings: Settings) = {
     
     //  append to the classpath the main ScalaLab libraries
@@ -203,7 +207,7 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
     }
   
 
-  // init the ScalaLab interpreter
+  
   def init {
     
     scalaExec.Interpreter.GlobalValues.editorPane.getDocument().putProperty(javax.swing.text.DefaultEditorKit.EndOfLineStringProperty, "\n")
@@ -249,7 +253,7 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
                  settings.classpath.append(toolboxName)
                  GlobalValues.ScalaSciClassPathComponents.add(toolboxName)
             
-        if (GlobalValues.interpreterClassPathComponents.contains(toolboxName)==false)
+                  if (GlobalValues.interpreterClassPathComponents.contains(toolboxName)==false)
                     GlobalValues.interpreterClassPathComponents.add(toolboxName)
             
                  println("appending from defaultToolboxes folder toolbox: "+file)
@@ -267,7 +271,7 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
           if (GlobalValues.mouseMotionListenerForJSyntax == true)
             scalaExec.Interpreter.GlobalValues.editorPane.addMouseMotionListener( new PaneMouseMotionAdapter())
           
-            scalaExec.Interpreter.GlobalValues.globalInterpreter = new scala.tools.nsc.interpreter.IMain( settings, new NewLinePrintWriter( out getOrElse (new ConsoleWriter), true )) {
+            scalaExec.Interpreter.GlobalValues.globalInterpreter = new scala.tools.nsc.interpreter.IMain( settings,  new ReplReporterImpl(settings)){
              override protected def parentClassLoader = pane.getClass.getClassLoader
                         }
             scalaExec.Interpreter.GlobalValues.globalInterpreter.setContextClassLoader()
@@ -671,8 +675,6 @@ def setupKeyActions() = {
     
     installScalaCompletion()    
     
-    imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F7, InputEvent.SHIFT_MASK), "scalaCompletionAll")
-    amap.put("scalaCompletionAll",  new ScalaCompletionAction())
                
     imap.put(KeyStroke.getKeyStroke( KeyEvent.VK_F2, 0), "executeToCursor")
     amap.put("executeToCursor", new AbstractAction {
@@ -729,9 +731,9 @@ def installScalaCompletion() = {
     val imap = scalaExec.Interpreter.GlobalValues.editorPane.getInputMap( JComponent.WHEN_FOCUSED )
     val amap = scalaExec.Interpreter.GlobalValues.editorPane.getActionMap()
       
-    ScalaInterpreterPaneGlobals.completer = new PresentationCompilerCompleter(GlobalValues.globalInterpreter)
-    imap.put(KeyStroke.getKeyStroke( KeyEvent.VK_F7, 0), "scalaCompletionHelp")
-    amap.put("scalaCompletionHelp",  new CompletionAction( ScalaInterpreterPaneGlobals.completer))
+  //  ScalaInterpreterPaneGlobals.completer = new PresentationCompilerCompleter(GlobalValues.globalInterpreter)
+    //imap.put(KeyStroke.getKeyStroke( KeyEvent.VK_F7, 0), "scalaCompletionHelp")
+    //amap.put("scalaCompletionHelp",  new CompletionAction( ScalaInterpreterPaneGlobals.completer))
     
 }
 

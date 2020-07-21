@@ -2,6 +2,9 @@
 
 package scalaSci.EJML
 
+
+
+import scala.language.postfixOps
 import java.util._
 import org.ejml.data.BlockMatrix64F
 

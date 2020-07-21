@@ -7,6 +7,7 @@ import scalaSci.math.array.DoubleArray
 import java.util._
 import Jama._
 
+import scala.language.postfixOps
 
 // this class provides Matrix operations, uses one indexed values for direct interfacing with NumAL
 class Matrix( n: Int, m: Int)  extends AnyRef  with scalaSciMatrix[scalaSci.Matrix] 

@@ -26,7 +26,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.text.BadLocationException;
 import org.fife.ui.rsyntaxtextarea.RSyntaxDocument;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import scala.tools.nsc.interpreter.PresentationCompilerCompleter;
 import scalaExec.Interpreter.GlobalValues;
 import scalaExec.gui.AutoCompletionFrame;
 import scalaExec.gui.DetailHelpFrame;
@@ -36,7 +35,6 @@ import scalaExec.gui.DetailHelpFrame;
 // handles the mouse clicks for the rsyntaxArea editor
 public class EditorKeyMouseHandler extends MouseAdapter implements KeyListener
 {
-        scala.tools.nsc.interpreter.PresentationCompilerCompleter   completer = new PresentationCompilerCompleter(GlobalValues.globalInterpreter);  // the completer class of the Scala Interpreter on which some completion services are based
         int caretPos = 0;      // track the cursor position
         int prevCaretPos = 0;
         int  textLen = 0;  // the text lenngth
@@ -301,19 +299,10 @@ for (int k=0; k<sf.length; k++) {
    break;
 
             case KeyEvent.VK_SPACE:
-                if (GlobalValues.rsyntaxInScalaCompletionMode == true)
-                {
-            
-              if (e.isControlDown()) {
-                (new ScalaCompletionRSyntaxAction(this.completer)).performCompletion(); 
-                  }
-                }
-              break;
+            break;
                 
             case KeyEvent.VK_F7:
                 
-                (new ScalaCompletionRSyntaxAction(this.completer)).performCompletion(); 
-                e.consume();
                 break;
 
                 

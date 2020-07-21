@@ -12,6 +12,7 @@ import scalaSci.RichDouble1DArray
 import scalaSci.RichDouble2DArray
 import scalaSci.Matrix
 
+import scala.language.postfixOps
 import scalaSci.jeigen.Mat
 
 // allows static methods of ScalaSci's mathematical objects (e.g. Mat) to be conveniently available,

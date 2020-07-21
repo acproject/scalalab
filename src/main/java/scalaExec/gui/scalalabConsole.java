@@ -39,6 +39,11 @@ import scalaExec.scalaLab.StreamGobbler;
 import static scalalab.JavaGlobals.*;
 
 
+import scala.tools.nsc.interpreter.*;
+import scala.tools.nsc.interpreter.shell.*;
+import scala.tools.nsc.reporters.Reporter;
+
+
 import static scalaExec.Interpreter.ControlInterpreter.*;
 import scalalab.JavaGlobals;
 
@@ -326,18 +331,16 @@ public class scalalabConsole  extends Console  {
 
           mkPaths();
            
-           
-         prepareSettings(scalaSettings);  
-         
-         
           Vector <String> classpath = GlobalValues.ScalaSciClassPathComponents;
            for (int k=0; k<classpath.size(); k++) {
               String clsp = classpath.elementAt(k);
               scalaSettings.classpath().append(clsp.trim());  
           }
 
+           
+         prepareSettings(scalaSettings);  
       
-         scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings);
+         scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings, new ReplReporterImpl(scalaSettings));
 
           
          if (GlobalValues.interpreterTypeForPane == GlobalValues.EJMLMat)  {
@@ -385,26 +388,21 @@ public class scalalabConsole  extends Console  {
 
       
       public void commonCreateInterpreterCode() {
-    	  if (scalaExec.Interpreter.GlobalValues.createNewInterpreterOnToggleLibraries==true) {  // new interpreter
-    		  
          
-   
-   GlobalValues.interpreterClassPathComponents= null; 
+      GlobalValues.interpreterClassPathComponents= null; 
       
       mkPaths();
       
-          
-         prepareSettings(scalaSettings);  
-         
-         
        Vector classpathScalaSci = GlobalValues.ScalaSciClassPathComponents;
        for (int k=0; k<classpathScalaSci.size(); k++) {
               String clsp = (String)classpathScalaSci.elementAt(k);
               scalaSettings.classpath().append(clsp.trim());  
           }
   
+          
+         prepareSettings(scalaSettings);  
     
-        scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings);
+        scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings, new ReplReporterImpl(scalaSettings));
 
          GlobalValues.autoCompletionWorkspace = new AutoCompletionWorkspace();
          GlobalValues.autoCompletionWorkspace.scanVars=new Vector();
@@ -422,7 +420,6 @@ public class scalalabConsole  extends Console  {
            GlobalValues.scalalabMainFrame.setTitle(scalaExec.Interpreter.GlobalValues.buildTitle());
 
            scalaExec.Interpreter.GlobalValues.globalInterpreterPane.installScalaCompletion();
-    	  }
       
             
      }
@@ -645,10 +642,6 @@ public class scalalabConsole  extends Console  {
       GlobalValues.interpreterClassPathComponents= null; 
       
       mkPaths();
-          
-         prepareSettings(scalaSettings);  
-         
-         
       
        Vector classpathScalaSci = GlobalValues.ScalaSciClassPathComponents;
        for (int k=0; k<classpathScalaSci.size(); k++) {
@@ -656,8 +649,10 @@ public class scalalabConsole  extends Console  {
               scalaSettings.classpath().append(clsp.trim());  
           }
   
+          
+         prepareSettings(scalaSettings);  
     
-        scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings);
+        scalaExec.Interpreter.GlobalValues.globalInterpreter =  new scala.tools.nsc.interpreter.IMain(scalaSettings, new ReplReporterImpl(scalaSettings));
 
          GlobalValues.autoCompletionWorkspace = new AutoCompletionWorkspace();
          GlobalValues.autoCompletionWorkspace.scanVars=new Vector();
@@ -703,10 +698,6 @@ if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostI
       
           mkPaths();
           
-  
-         prepareSettings(scalaSettings); 
-         
-         
           for (String clsp:classpath)  
               scalaSettings.classpath().append(clsp.trim());
            
@@ -715,8 +706,10 @@ if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostI
               String clsp = (String)classpathScalaSci.elementAt(k);
               scalaSettings.classpath().append(clsp.trim());  
           }
+  
+         prepareSettings(scalaSettings);  
       
-          scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings);
+          scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings,  new ReplReporterImpl(scalaSettings));
          
           scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsScala);   // interpret the basic imports
           
@@ -750,16 +743,14 @@ if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostI
       
       mkPaths();
       
-         
-     prepareSettings(scalaSettings);  
-     
-     
           for (int k=0; k<classpath.size(); k++) {
               String clsp = (String)classpath.elementAt(k);
               scalaSettings.classpath().append(clsp.trim());  
           }
+         
+     prepareSettings(scalaSettings);  
     
-     scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings);
+     scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings, null);
      scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsScala);   // interpret the basic imports
           
      for (int k=0; k<classpath.size(); k++) {
@@ -796,16 +787,14 @@ if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostI
   
       mkPaths();
       
-          prepareSettings(scalaSettings);  
-          
-          
           for (int k=0; k<classpath.size(); k++) {
               String clsp = (String)classpath.elementAt(k);
               scalaSettings.classpath().append(clsp.trim());  
           }
     
+          prepareSettings(scalaSettings);  
     
-         scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings);
+         scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings, new ReplReporterImpl(scalaSettings));
           
           scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsEJMLScala);   // interpret the basic imports
   if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac)        

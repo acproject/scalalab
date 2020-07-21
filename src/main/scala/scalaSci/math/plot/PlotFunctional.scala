@@ -7,7 +7,7 @@ For example we like to write:
 to plot the corresponding function in the interval  [-5, 15]. 
 Also we like to be able to plot easily any function y = f(x) or z=f(x,y)
 */
-import scala.tools.nsc.Interpreter
+import scala.tools.nsc.interpreter.IMain
 import scala.tools.nsc.Settings
 
 import scalaExec.Interpreter.ControlInterpreter._
@@ -61,7 +61,7 @@ if (scalaExec.Interpreter.GlobalValues.globalInterpreter == null) {
         
       set
    }
-     scalaExec.Interpreter.GlobalValues.globalInterpreter = new Interpreter(settings) 
+     scalaExec.Interpreter.GlobalValues.globalInterpreter = new IMain(settings, null) 
   }
     scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(classText)
   }
@@ -109,7 +109,7 @@ if (scalaExec.Interpreter.GlobalValues.globalInterpreter == null) {
       
       set
    }
-     scalaExec.Interpreter.GlobalValues.globalInterpreter = new Interpreter(settings) 
+     scalaExec.Interpreter.GlobalValues.globalInterpreter = new IMain(settings, null) 
   } 
    
   scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(classText)

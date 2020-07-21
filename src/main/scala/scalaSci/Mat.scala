@@ -6,6 +6,7 @@ import scalaSci.math.array.DoubleArray
 import java.util._
 import Jama._
 
+import scala.language.postfixOps
 //import collection.immutable.Vector
 
 

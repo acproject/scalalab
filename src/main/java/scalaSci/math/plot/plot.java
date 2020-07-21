@@ -124,11 +124,6 @@ static public double [][] arrToDoubleDouble(float [][] x)  // convert float [][]
 
 // extracts the digits of a decimal number, in order to allow writing for example: 
 //   subplot(322), which is interpreted as subplot(3,2,2)
-/*
-val v = vrand(4000)
-subplot(312)
-plot(v)
-*/
 public static void subplot( int  p)  {
     int  r = p / 100;  
     int  rem = p % 100;

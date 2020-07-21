@@ -13,7 +13,7 @@ public class asynchEig  implements  Callable<EigResults> {
 
 
     public static EigResults  eigresults;
-    double [] [] xa;   // the data array for which eigenvalue computation is performed
+    double [] [] xa;   // the data array for which SVD computation is performed
     
     asynchEig(double [][]x ) {
         xa = x;

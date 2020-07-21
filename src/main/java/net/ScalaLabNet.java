@@ -110,18 +110,17 @@ public static void     writeArray(DataOutputStream  writer,  double [][] bd,  in
   } // Runnable
     );
     
-  //  System.out.println("attempting to start server initialization");
+  //  System.out.println("attempting to srart server initialization");
     initThread.start();
   }
  
           
       
          
- // init a client that connects to a remote ScalaLab server
+ // init a client that connects to a tremote ScalaLab server
  public static void initClient() {
         try {
             //   System.out.println("before client socket creation");
-        	  // create client socket
             GlobalValues.sclient = new Socket(InetAddress.getByName(serverIP), GlobalValues.scalaLabServerPort);
             //   System.out.println("after client socket creation");
             

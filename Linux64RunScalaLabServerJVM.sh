@@ -1,1 +1,1 @@
-java         -XX:+UseNUMA -XX:+UseParallelGC  -XX:+DoEscapeAnalysis    -Djava.library.path=.:./lib:./libScala/:./extralib -Xss5m -Xms4000m -Xmx23500m -jar ScalaLab.jar   &
+java       -XX:+UseNUMA -XX:+UseParallelGC -XX:+UseCompressedOops -XX:+DoEscapeAnalysis   -Djava.library.path=.:./lib:./libCUDA -Xss5m -Xms4000m -Xmx23500m -jar ScalaLab.jar   &
