@@ -60,12 +60,10 @@ public class JavaUtilities {
     
     if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac) {
       JavaGlobals.javacppFile = jarPathOfClass("org.bytedeco.javacpp.DoublePointer").toString().replace("file:/", "/");
-      JavaGlobals.gslFile = jarPathOfClass("org.bytedeco.javacpp.presets.gsl").toString().replace("file:/", "/");
     }
     else {
       JavaGlobals.javacppFile = ".";
-      JavaGlobals.gslFile =  ".";
-        
+
     }
   
     JavaGlobals.mtjColtSGTFile = jarPathOfClass("no.uib.cipr.matrix.AbstractMatrix").toString().replace("file:/", "/");
@@ -97,11 +95,9 @@ public class JavaUtilities {
     JavaGlobals.jsciFile = jarPathOfClass("JSci.maths.wavelet.Cascades").toString().replace("file:/", "");
     if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac) {
       JavaGlobals.javacppFile = jarPathOfClass("org.bytedeco.javacpp.DoublePointer").toString().replace("file:/", "");
-      JavaGlobals.gslFile = jarPathOfClass("org.bytedeco.javacpp.presets.gsl").toString().replace("file:/", "");
-    }
+      }
     else {
       JavaGlobals.javacppFile = ".";
-      JavaGlobals.gslFile = ".";
     }
     JavaGlobals.mtjColtSGTFile = jarPathOfClass("no.uib.cipr.matrix.AbstractMatrix").toString().replace("file:/", "");
     JavaGlobals.ApacheCommonsFile = jarPathOfClass("org.apache.commons.math3.ode.nonstiff.ThreeEighthesIntegrator").toString().replace("file:/", "");

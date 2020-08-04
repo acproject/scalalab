@@ -306,50 +306,6 @@ object FFTScala {
     (realffts, imffts)
   }
 
-  def nfft( data: Array[Double]) = {
-    var N = data.length
-       
-    var  paddedData = data // we will actually pad only for signal length not a power of 2
-    var p2N=java.lang.Math.ceil(log2(N)).toInt
-    var newN =  java.lang.Math.pow(2, p2N).asInstanceOf[Int]
-    
-    if (newN != N) { // not a power of two, zero pad
-      paddedData = new Array[Double](newN)
-     var k=0
-     while  (k<N) {
-       paddedData(k) = data(k);
-       k += 1
-     }
-     // zero-pad
-     while (k<newN) {
-       paddedData(k) = 0.0
-       k +=1
-      }
-    } 
-         
-    N = paddedData.length
-    var N2 = (N/2).toInt
-    val realffts = new Array[Double](N2)
-    val imffts = new Array[Double](N2)
-    var  cpdata =NR.Common.copy(paddedData)  // copy the input data
-  /**
-   * Replaces cpdata[0..2*n-1] by its discrete Fourier transform, if isign is
-   * input as 1; or replaces cpdata[0..2*n-1] by n times its inverse discrete
-   * Fourier transform, if isign is input as 1. data is a complex array of
-   * length n stored as a real array of length 2*n. n must be an integer power of 2.
-   */
-  scalaExec.Interpreter.NativeLibsObj.nrObj.cnrfft(cpdata, N, 1)   // perform the FFT
-
-    var  cnt = 0
-    var  k = 0
-    while  ( k < N) {
-        realffts(cnt) = cpdata(k)
-        imffts(cnt) = cpdata(k+1)
-        k += 2
-        cnt += 1
-    }
-    (realffts, imffts)
-  }
 
   
   // return also the frequency axis, when the Sampling Frequency is passed
@@ -416,72 +372,7 @@ freqs(cnt) = 1.0/(2.0*Delta)
    */ 
     (realffts, imffts, freqs)
   }
-  
 
-  // return also the frequency axis, when the Sampling Frequency is passed
-  def nfft(data: Array[Double], SFreq: Double) = {
-    var N = data.length
-    
-    var paddedData = data  //  we will actually pad only for signal length not a power of 2 
-    var p2N = java.lang.Math.ceil(log2(N)).toInt
-    var newN = java.lang.Math.pow(2, p2N).asInstanceOf[Int]
-    
-    if (newN != N)  { // not a power of two, zero pad
-        paddedData = new Array[Double](newN)
-        var k=0
-        while (k<N)  {
-          paddedData(k) = 0.0
-          k += 1
-          }
-       }
-   
-    N = paddedData.length
-    val N2 = (N/2).toInt
-    val Delta = 1.0/SFreq  // the sampling interval
-    val ND = N * Delta
-    val freqs = new Array[Double](N2)  // the positive frequency axis half of the complex Fourier Transform
-    val realffts = new Array[Double](N2)
-    val imffts = new Array[Double](N2)
-    var  cpdata =NR.Common.copy(data)  // copy the input data
-  
-    /**
-   * Replaces cpdata[0..2*n-1] by its discrete Fourier transform, if isign is
-   * input as 1; or replaces cpdata[0..2*n-1] by n times its inverse discrete
-   * Fourier transform, if isign is input as 1. data is a complex array of
-   * length n stored as a real array of length 2*n. n must be an integer power of 2.
-   */
-  scalaExec.Interpreter.NativeLibsObj.nrObj.cnrfft(cpdata, N, 1)   // perform the FFT
-
-      
-    var  cnt = 0
-    var  k = 0
-    //positive frequencies
-    while  ( k <= N2) {
-        realffts(cnt) = cpdata(k)
-        imffts(cnt) = cpdata(k+1)
-        freqs(cnt) = cnt/ND
-        k += 2
-        cnt += 1
-    }
-/*
-realffts(cnt) =  cpdata(k)
-imffts(cnt) = cpdata(k+1)
-freqs(cnt) = 1.0/(2.0*Delta)
-
-  cnt += 1
-// negative frequencies
-    var currNegFreq  = N2-1
-    while  (currNegFreq>=1) {
-        realffts(cnt) = cpdata(k)
-        imffts(cnt) = cpdata(k+1)
-        freqs(cnt) = -currNegFreq/ND
-        currNegFreq -= 1
-        cnt += 1
-        k += 2
-    }
-   */ 
-    (realffts, imffts, freqs)
-  }
   
      
      

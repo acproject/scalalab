@@ -33,7 +33,6 @@ public class JavaGlobals {
     static public String jblasFile;  // JBLAS jar file
     
     static public String javacppFile;   // Java - CPP interface file
-    static public String gslFile;   // GNU Scientific Library File
     static public String openblasFile;
       
    

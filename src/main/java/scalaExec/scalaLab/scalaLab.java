@@ -4,7 +4,6 @@ package scalaExec.scalaLab;
 This file implements the main Swing GUI for ScalaLab
  */
 import scala.collection.JavaConverters.*;
-import CUDAOps.KernelOps;
 
 import scalainterpreter.ScalaInterpreterPane;
 import java.net.URISyntaxException;
@@ -36,7 +35,7 @@ import scalaExec.Interpreter.GlobalValues;
 import scalalab.JavaGlobals;
 
 import static scalaExec.Interpreter.ControlInterpreter.*;
-import scalaExec.Interpreter.NativeLibsObj;
+
 
 /**
  * The main GUI for the scalaLab
@@ -73,8 +72,6 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
     private final JMenuItem resetScalaInterpreterItem = new JMenuItem("Reset Scala Interpreter using Scalalab default Imports");
     private final JMenuItem resetScalaInterpreterNoImportsItem = new JMenuItem("Reset Scala Interpreter not using any ScalaLab related  imports (useful for e.g. avoiding problems with ScalaLab related implicits)");
     private final JMenuItem resetScalaInterpreterEJMLItem = new JMenuItem("Reset Scala Interpreter using Efficient Java Matrix Library of Peter Abeles");
-    private final JMenuItem   resetScalaInterpreterCUDAItem = new JMenuItem("Reset Scala Interpreter using CUDA Accelerated matrix type");
-    private final JMenuItem resetScalaInterpreterEIGENItem = new JMenuItem("Reset Scala Interpreter using EIGEN Library");
     private final JMenuItem resetScalaInterpreterD2Das1DItem = new JMenuItem("Reset Scala Interpreter using D2Das1D matrix");
     private final JMenuItem resetScalaInterpreterJBLASItem = new JMenuItem("Reset Scala Interpreter using JBLAS Library");
     private final JMenuItem resetScalaInterpreterCommonMathsItem = new JMenuItem("Reset Scala Interpreter using Apache Common Maths Library");
@@ -98,10 +95,7 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
 
     private JMenuItem watchVariablesJMenuItem;
 
-             
-    private JMenu     cudaMenu;
-    private JMenuItem cudaDeviceInfoMenuItem;
-      
+
     private JMenu libConfMenu;
     private JMenuItem controlMainToolbarJMenuItem;
     private JMenuItem controlScalaCompilerJMenuItem;
@@ -383,21 +377,7 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
      * Create the main graphical interface (menu, buttons, delays...).
      */
     public scalaLab(String ScalaSciClassPath, String[] additionalToolboxes) {
-        
-         
-        if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac) {
-       GlobalValues.commonImports += "\n" +
-             "import _root_.scalaSci.math.plot.JavaFX.javaFXPlotLine._  \n" +
-            "import _root_.scalaSci.math.plot.JavaFX.javaFXPlotScatter._   \n" +
-            "import _root_.scalaSci.math.plot.JavaFX.javaFXPlotPie._   \n" +
-            "import _root_.scalaSci.math.plot.JavaFX.javaFXPlotBar._  \n" +
-            "import _root_.org.bytedeco.javacpp.gsl \n" +
-            "import _root_.org.bytedeco.javacpp.gsl._ \n" +
-            "import _root_.scalaSci.GSLMacro._  \n" +
-            "import _root_.org.bytedeco.javacpp.DoublePointer \n";
-               
-    
-    }
+
 
         initHelpObjects();
 
@@ -422,6 +402,7 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
         GlobalValues.ScalaLabInInit = false;   // ScalaLab inited
 
         GlobalValues.extensionClassLoader = new scalaExec.ClassLoaders.ExtensionClassLoader(".");
+        
 
     }
 
@@ -724,6 +705,7 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
         }
 
         int xSize = GlobalValues.scalalabMainFrame.getSize().width;
+
 
         GlobalValues.consoleOutputWindow = new SysUtils.ConsoleWindow();
 
@@ -1196,20 +1178,15 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
                 scalaInterpreterMenu.add(resetScalaInterpreterEJMLItem);
                 scalaInterpreterMenu.add(resetScalaInterpreterMTJItem);
                 scalaInterpreterMenu.add(resetScalaInterpreterCommonMathsItem);
-                scalaInterpreterMenu.add(resetScalaInterpreterEIGENItem);
                 scalaInterpreterMenu.add(resetScalaInterpreterItem);
                 resetToolboxesScalaInterpreterItem.setFont(GlobalValues.uifont);
                 scalaInterpreterMenu.add(resetToolboxesScalaInterpreterItem);
                 resetScalaInterpreterEJMLItem.setFont(GlobalValues.uifont);
-                resetScalaInterpreterCUDAItem.setFont(GlobalValues.uifont);
-                
-                resetScalaInterpreterJBLASItem.setFont(GlobalValues.uifont);
-                resetScalaInterpreterEIGENItem.setFont(GlobalValues.uifont);
+                   resetScalaInterpreterJBLASItem.setFont(GlobalValues.uifont);
                 resetScalaInterpreterD2Das1DItem.setFont(GlobalValues.uifont);
                 resetScalaInterpreterCommonMathsItem.setFont(GlobalValues.uifont);
                 scalaInterpreterMenu.add(resetScalaInterpreterEJMLItem);
                 scalaInterpreterMenu.add(resetScalaInterpreterJBLASItem);
-                scalaInterpreterMenu.add(resetScalaInterpreterEIGENItem);
                 scalaInterpreterMenu.add(resetScalaInterpreterD2Das1DItem);
                 scalaInterpreterMenu.add(resetScalaInterpreterCommonMathsItem);
                 scalaInterpreterMenu.setFont(GlobalValues.uifont);
@@ -1341,22 +1318,12 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
                     GlobalValues.scalalabMainFrame.scalalabConsole.createInterpreterForResetEJML();
                     
                 });
-                
-                resetScalaInterpreterEIGENItem.addActionListener((ActionEvent e) -> {
-                    GlobalValues.replayingBuffer.removeAllElements();
-                    GlobalValues.scalalabMainFrame.scalalabConsole.createInterpreterForResetEigen();
-                });
-                
+
                 resetScalaInterpreterD2Das1DItem.addActionListener((ActionEvent e) -> {
                     GlobalValues.replayingBuffer.removeAllElements ();
                     GlobalValues.scalalabMainFrame.scalalabConsole.createInterpreterForResetD2Das1D();
                 });
-                
-                resetScalaInterpreterCUDAItem.addActionListener((ActionEvent e) -> {
-                    GlobalValues.replayingBuffer.removeAllElements();
-                    GlobalValues.scalalabMainFrame.scalalabConsole.createInterpreterForResetCUDA();
-                });
-                
+
                 resetScalaInterpreterMTJItem.addActionListener((ActionEvent e) -> {
                     GlobalValues.replayingBuffer.removeAllElements();
                     GlobalValues.scalalabMainFrame.scalalabConsole.createInterpreterForResetMTJ();
@@ -1532,72 +1499,7 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
                 confMenu.setToolTipText("Configures Scala compiler, number formats  etc. Many settings are saved upon exit for the next sessions");
                 
                 
-                cudaMenu = new JMenu("CUDA", true);
-                cudaMenu.setFont(GlobalValues.uifont);
-                cudaMenu.setToolTipText("NVIDIA Compute Unified Device Architecture (Requires CUDA 5.5 Installation )  - Windows 64 and Linux 64 supported");
-                
-                cudaDeviceInfoMenuItem  = new JMenuItem("Display CUDA Configuration");
-                cudaDeviceInfoMenuItem.setFont(GlobalValues.uifont);
-                cudaDeviceInfoMenuItem.addActionListener(new ActionListener() {
-                    
-                    
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (NativeLibsObj.cudaObj == null) {
-                            NativeLibsObj.cudaObj = new CUDAOps.KernelOps();
-                        }
-                        CUDAOps.KernelOps   km = NativeLibsObj.cudaObj;
-                        String  cudaInfo = km.getCUDADeviceInfo();
-                        org.fife.ui.rsyntaxtextarea.RSyntaxTextArea     cudaArea = new  RSyntaxTextArea();
-                        cudaArea.setText(cudaInfo);
-                        
-                        cudaArea.setToolTipText("CUDA Configuration information");
-                        
-                        cudaArea.setFont(new Font(GlobalValues.paneFontName, Font.PLAIN, GlobalValues.paneFontSize));
-                        
-                        cudaArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_GROOVY);
-                        cudaArea.setCodeFoldingEnabled(true);
-                        
-                        RTextScrollPane  cudaScrPane = new RTextScrollPane(cudaArea);
-                        
-                        JFrame cudaHelpFrame = new JFrame("CUDA Configuration Information");
-                        cudaHelpFrame.add(cudaScrPane);
-                        cudaHelpFrame.setLocation(200, 200);
-                        cudaHelpFrame.pack();
-                        cudaHelpFrame.setVisible(true);
-                    }
-                });
-                
-                
-                cudaMenu.add(cudaDeviceInfoMenuItem);
-                
-                final JMenuItem controlCUDAJMenuItem = new JMenuItem("CUDA enable state is now:  "+GlobalValues.useCUDAflag);
-                controlCUDAJMenuItem.setFont(GlobalValues.uifont);
-                controlCUDAJMenuItem.setToolTipText("Toggles use of CUDA based operations if CUDA is installed. Applies after restart. ");
-                controlCUDAJMenuItem.addActionListener(new ActionListener() {
-                    
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        GlobalValues.useCUDAflag = !GlobalValues.useCUDAflag;
-                        if (GlobalValues.useCUDAflag == true) {
-                            String cudaPath = System.getenv("CUDA_PATH");
-                            if (cudaPath == null)  // CUDA is not installed
-                            {
-                                GlobalValues.useCUDAflag = false;
-                                JOptionPane.showMessageDialog(null, "You do not have CUDA installed properly, CUDA_PATH is null. Therefore, we cannot activate CUDA related operations");
-                            }
-                            else {    // CUDA seems installed
-                                if (NativeLibsObj.cudaObj == null) {
-                                    NativeLibsObj.cudaObj = new CUDAOps.KernelOps();
-                                }
-                            }
-                            controlCUDAJMenuItem.setText("CUDA enable state is now: "+GlobalValues.useCUDAflag);
-                        }
-                    }} );
-                
-                
-                cudaMenu.add(controlCUDAJMenuItem);
-                
+
                 
                 libConfMenu = new JMenu("LibConfiguration", true);
                 libConfMenu.setFont(GlobalValues.uifont);
@@ -2074,23 +1976,6 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
                     int k = 1;
                     watchClassesOfJTransforms.displayClassesAndMethods(jtransformsClasses, "JTransforms Library", scalaExec.gui.WatchClasses.watchXLoc + k * 50, scalaExec.gui.WatchClasses.watchYLoc + k * 50);
                 });
-                JMenuItem jGSLMenuItem = new JMenuItem("GNU Scientific Library (GSL) routines");
-                jGSLMenuItem.setToolTipText("Display information using reflection for the classes and methods of  the GNU Scientific Library (GSL) ");
-                jGSLMenuItem.setFont(GlobalValues.uifont);
-                libConfMenu.add(jGSLMenuItem);
-                jGSLMenuItem.addActionListener((ActionEvent e) -> {
-                    
-                    if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac) {
-                        scalaExec.gui.WatchClasses watchClassesOfJTransforms = new scalaExec.gui.WatchClasses();
-                        
-                        String gslFile = JavaGlobals.gslFile;
-                        
-                        Vector gslClasses = scalaExec.ClassLoaders.JarClassLoader.scanLib(gslFile, "org/bytedeco/javacpp/gsl");
-                        
-                        int k = 1;
-                        watchClassesOfJTransforms.displayClassesAndMethods(gslClasses, "GNU Scientific  Library", scalaExec.gui.WatchClasses.watchXLoc + k * 50, scalaExec.gui.WatchClasses.watchYLoc + k * 50);
-                    }
-                });
                 // now prepare the "Search Keyword" menu items
                 
                 JMenuItem ScalaSciRoutinesMenuItemWithKeyword = new JMenuItem("Search keyword in ScalaSci Routines");
@@ -2556,8 +2441,7 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
                 mainJMenuBar.add(JavaHelpMenu);
                 mainJMenuBar.add(helpMenu);
                 
-                mainJMenuBar.add(cudaMenu);
-                
+
                 mainJMenuBar.setOpaque(true);
                 myId.setJMenuBar(mainJMenuBar);
             }

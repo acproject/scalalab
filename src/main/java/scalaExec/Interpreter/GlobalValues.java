@@ -82,11 +82,7 @@ public class GlobalValues
     static public  java.lang.Thread currentThread = null;   // the currently executed thread
     static public   double  mulMultithreadingLimit = 1000;  // a multiplication that involves more than that number of elements, is large thus use multithreading
     
-      
-    // at the startup code, if we detect CUDA_PATH environment variable, we set these variables to true
-    static public boolean useCUDAflag = false;
-    static public String useCUDAprop = "false";
-    
+
     
    // these concern the socket based ScalaLab's server computations 
  static public ServerSocket scalaLabServerSocket;
@@ -439,7 +435,6 @@ public class GlobalValues
             "import scala.concurrent.Future\n" +
             "import scala.concurrent.ExecutionContext.Implicits.global\n"+
 
-            "import _root_.scalaSci.NROps._\n"+
             "import _root_.scalaSci.ILapack._ \n"+
  
              "import _root_.scalaSci.MTJ.BandMat\n"+
@@ -457,9 +452,6 @@ public class GlobalValues
          
             "import java.text.DecimalFormat \n"+
             "import System.out._ \n"+
-            
-             
-            "import _root_.Do._ \n"+
             
             "import _root_.scalaSci.math.plot.canvas._; \n"+
             "import _root_.scalaSci.math.plot.plotObjects._; \n"+
@@ -540,8 +532,7 @@ public class GlobalValues
             
             "import _root_.net.ScalaLabNet._; \n"+
             "import _root_.net.NetSVD._; \n"+
-            "import _root_.net.gslServerOps._; \n"+
-            
+
             "import _root_.scalaSci.asynch._\n"+
             "import _root_.scalaSci.asynch.asynchEig._\n"+
             "import _root_.scalaSci.asynch.asynchfft._\n"+
@@ -557,18 +548,13 @@ public class GlobalValues
              "type R2D = RichDouble2DArray\n";   
   
     
-    
-       
-    static public String warmUpGSLScript = 
-            " org.bytedeco.javacpp.gsl.gsl_ieee_env_setup ";    // this dummy code snippet warms up GSL interface properly
-            
+
     // these are intended for standalone applications that make use of the ScalaLab libraries
     static public String standAloneImports = 
            "import _root_.java.awt.Color ; \n" +   // Java standard UI and graphics support
             "import scalaExec.Interpreter.importHelper._;\n"+
             "import java.lang.Math._; \n"+
 
-            "import _root_.scalaSci.NROps._\n"+
             "import _root_.scalaSci.ILapack._ \n"+
  
              "import _root_.scalaSci.MTJ.BandMat\n"+
@@ -667,12 +653,7 @@ public class GlobalValues
             "import _root_.scalaSci.EJML.BMat._ ; \n"+ 
              "import _root_.scalaSci.EJML.StaticMathsEJML._ ; \n";
             
-        static public    String  basicImportsCUDAScala = 
-            commonImports+
-            "import _root_.scalaSci.CUDAMat ; \n"+ 
-            "import _root_.scalaSci.CUDAMat._ ; \n"+ 
-             "import _root_.scalaSci.StaticMathsCUDA._ ; \n";
- 
+
     
     
     static public    String  basicImportsJBLASScala = 
@@ -688,12 +669,7 @@ public class GlobalValues
            "import _root_.scalaSci.CommonMaths.Mat ; \n"+ 
            "import _root_.scalaSci.CommonMaths.Mat._ ; \n"+ 
            "import _root_.scalaSci.CommonMaths.StaticMathsCommonMaths._ ; \n";
-                    
-    static public    String  basicImportsEigenScala = 
-            commonImports+
-           "import _root_.scalaSci.jeigen.Mat ; \n"+ 
-           "import _root_.scalaSci.jeigen.StaticMathsEigen._; \n";
-             
+
     
     static public    String  basicImportsD2Das1DScala = 
             commonImports+
@@ -1083,32 +1059,7 @@ public class GlobalValues
          if (IPServerProperty != null)
              GlobalValues.serverIP = IPServerProperty;
          
-           // check if CUDA_PATH is installed
-             String cudaPath = System.getenv("CUDA_PATH");
-             if (cudaPath == null)  // CUDA is not installed
-                     {
-        GlobalValues.useCUDAflag = false;
-        settings.setProperty("useCUDAProp", "false");
-        System.out.println("You do not have CUDA installed properly, CUDA_PATH_V6_5 is null. Therefore, we cannot activate CUDA related operations");
-                  }
-             else 
-                 GlobalValues.useCUDAflag = true;
-             
-         if (GlobalValues.useCUDAflag == true) {  // initialize objects for performing CUDA operations
-                 if (NativeLibsObj.cudaObj == null) {
-                      NativeLibsObj.cudaObj = new CUDAOps.KernelOps();
-                      NativeLibsObj.cudaSigObj = new CUDASig.CUDASig();
-                      GlobalValues.useCUDAflag = true;
-                      settings.setProperty("useCUDAProp", "true");
-                  }
-             }
-         
-             String useCUDAPropSetting = settings.getProperty("useCUDAProp");
-         if (useCUDAPropSetting != null) {
-              GlobalValues.useCUDAflag = Boolean.parseBoolean(useCUDAPropSetting);
-         }
-              
-         
+
          String rsyntaxInScalaGlobalModeSetting = settings.getProperty("rsyntaxInScalaCompletionModeProp");
          if (rsyntaxInScalaGlobalModeSetting != null)
           if (rsyntaxInScalaGlobalModeSetting.equalsIgnoreCase("Scala")) {
@@ -1454,8 +1405,7 @@ public class GlobalValues
          
          settings.setProperty("serverIPProp", GlobalValues.serverIP);
          
-         settings.setProperty("useCUDAProp", Boolean.toString(GlobalValues.useCUDAflag));
-       
+
          
          
          settings.setProperty("watchVariablesProp", Boolean.toString(GlobalValues.watchVariablesFlag));

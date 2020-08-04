@@ -53,7 +53,6 @@ if (scalaExec.Interpreter.GlobalValues.globalInterpreter == null) {
       set.classpath.append(scalalab.JavaGlobals.jblasFile)   // JBLAS file
       set.classpath.append(scalalab.JavaGlobals.jsciFile)   // JSci library
       set.classpath.append(scalalab.JavaGlobals.javacppFile)
-      set.classpath.append(scalalab.JavaGlobals.gslFile)
       set.classpath.append(scalalab.JavaGlobals.JASFile)    // Java Algebra System
       set.classpath.append(scalalab.JavaGlobals.LAPACKFile)    // LAPACK library file
       set.classpath.append(scalalab.JavaGlobals.ARPACKFile)    // ARPACK library file

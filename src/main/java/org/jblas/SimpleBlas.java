@@ -39,7 +39,6 @@
 
 package org.jblas;
 
-import static org.bytedeco.javacpp.gsl.CblasColMajor;
 import org.bytedeco.javacpp.openblas;
 import static org.bytedeco.javacpp.openblas.CblasNoTrans;
 import org.jblas.exceptions.*;

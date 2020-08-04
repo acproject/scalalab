@@ -715,7 +715,6 @@ catch (FileNotFoundException ex)  {
                          scalalab.JavaGlobals.jblasFile+File.pathSeparator+
                          scalalab.JavaGlobals.jsciFile+File.pathSeparator+
                          scalalab.JavaGlobals.javacppFile+File.pathSeparator+
-                         scalalab.JavaGlobals.gslFile+File.pathSeparator+
                          scalalab.JavaGlobals.mtjColtSGTFile+File.pathSeparator+
                          scalalab.JavaGlobals.ApacheCommonsFile+File.pathSeparator+
                          scalalab.JavaGlobals.jfreechartFile+File.pathSeparator+

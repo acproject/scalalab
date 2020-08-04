@@ -199,8 +199,7 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
       settings.classpath.append(scalalab.JavaGlobals.jblasFile)  // JBLAS File
       settings.classpath.append(scalalab.JavaGlobals.jsciFile)   // jSci  file
       settings.classpath.append(scalalab.JavaGlobals.javacppFile)
-      settings.classpath.append(scalalab.JavaGlobals.gslFile)
-      settings.classpath.append(scalalab.JavaGlobals.JASFile)     // Java Algebra System     
+      settings.classpath.append(scalalab.JavaGlobals.JASFile)     // Java Algebra System
       settings.classpath.append(scalalab.JavaGlobals.LAPACKFile)    // LAPACK linear algebra 
       settings.classpath.append(scalalab.JavaGlobals.ARPACKFile)  // ARPACK linear algebra 
        
@@ -295,9 +294,7 @@ def interpretImportsForInterpreterType = {
              
             case  _root_.scalaExec.Interpreter.GlobalValues.EJMLMat => 
                scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEJMLScala)
-               if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac)       
-  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.warmUpGSLScript)
-               
+
               if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
                  scalaExec.Interpreter.GlobalValues.userConsole.setText("")
                 
@@ -310,8 +307,6 @@ def interpretImportsForInterpreterType = {
               
               case   _root_.scalaExec.Interpreter.GlobalValues.MTJMat => 
                  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsMTJScala)
-                  if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac)       
-  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.warmUpGSLScript)
               if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
                  scalaExec.Interpreter.GlobalValues.userConsole.setText("")
                  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEJMLScala)
@@ -321,8 +316,6 @@ def interpretImportsForInterpreterType = {
                  
               case   _root_.scalaExec.Interpreter.GlobalValues.D2Das1DMat => 
                   scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsD2Das1DScala)
-                  if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac)       
-  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.warmUpGSLScript)
               if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
                  scalaExec.Interpreter.GlobalValues.userConsole.setText("")
                  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEJMLScala)
@@ -332,9 +325,7 @@ def interpretImportsForInterpreterType = {
                
              case  _root_.scalaExec.Interpreter.GlobalValues.ApacheCommonMathsMat =>
                 scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsCommonMathsScala)
-                 if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac)       
-    scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.warmUpGSLScript)
-              if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
+               if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
                  scalaExec.Interpreter.GlobalValues.userConsole.setText("")
                  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEJMLScala)
                  println("Common Maths Interpreter") 
@@ -342,30 +333,16 @@ def interpretImportsForInterpreterType = {
               
             case   _root_.scalaExec.Interpreter.GlobalValues.JBLASMat =>
                 scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsJBLASScala)
-                if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac)       
-    scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.warmUpGSLScript)
-             if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
+               if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
                  scalaExec.Interpreter.GlobalValues.userConsole.setText("")
                  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEJMLScala)
                  println("JBLAS  Interpreter") 
                }
               
-             
-            case  _root_.scalaExec.Interpreter.GlobalValues.EIGENMat => 
-               scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEigenScala)
-                if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac)       
-    scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.warmUpGSLScript)
-               if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
-                 scalaExec.Interpreter.GlobalValues.userConsole.setText("")
-                 scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEigenScala)
-                 println("EJML Interpreter")
-               }
-              
+
             case _ =>
                  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEJMLScala)
-                 if (GlobalValues.hostIsWin64 || GlobalValues.hostIsLinux64 || GlobalValues.hostIsMac)       
-    scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.warmUpGSLScript)
-            if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
+        if (scalaExec.Interpreter.GlobalValues.userConsole.getText.contains("error: ")) {
                  scalaExec.Interpreter.GlobalValues.userConsole.setText("")
                  scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(_root_.scalaExec.Interpreter.GlobalValues.basicImportsEJMLScala)
                  println("EJML Interpreter")

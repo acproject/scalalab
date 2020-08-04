@@ -18,9 +18,6 @@ import org.jblas.DoubleMatrix
 import org.jblas.ComplexDoubleMatrix
 
 
-import scalaSci.jcublas._
-import scalaSci.jcublas.FloatMatrix._
-import jcuda.jcufft._
 
 import java.util.concurrent.Callable
 import java.util.concurrent.ExecutionException
@@ -43,9 +40,6 @@ import cern.colt.matrix._
 import cern.colt.matrix.tdouble._
 import cern.colt.matrix.tdouble.impl.DenseDoubleMatrix2D
 
-  import org.bytedeco.javacpp.gsl._
-  import org.bytedeco.javacpp.DoublePointer
-  
 
 // by default RichDouble2DArray is initialized with the Array[Array[Double]] that it wraps
 class RichDouble2DArray(final var  v: Array[Array[Double]]) extends AnyRef with scalaSci.scalaSciMatrix[scalaSci.RichDouble2DArray]  {
@@ -3527,213 +3521,10 @@ final def   <<< (colsToPrepend: scalaSci.CommonMaths.Mat ): RichDouble2DArray =
 
 final def   <<< (colsToPrepend:  scalaSci.JBLAS.Mat ): RichDouble2DArray = 
      this CP  colsToPrepend
-  
-// native C multiplication 
-final def cc  (that:  Array[Array[Double]]): Array[Array[Double]] = {
-   var oneDThis = oneDDoubleArray( this.v  )   // construct a DoubleMatrix for the receiver
-   var oneDThat = oneDTransposeDoubleArray(that)  // construct a DoubleMatrix for the argument
-   var Arows = Nrows; var Acolumns = Ncols
-   var Ccolumns = that(0).length
-   var result = new Array[Double](Arows*Ccolumns)
-   
-    scalaExec.Interpreter.NativeLibsObj.nrObj.mul(oneDThis, Arows, Acolumns, oneDThat, Ccolumns, result)
-    
-    var rd = Array.ofDim[Double](Arows, Ccolumns)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < Arows ) {
-      c = 0
-      while (c < Ccolumns) {
-        rd(r)(c) = result(cnt)
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-    rd
-}   
 
-  
-// native C multiplication using p-threads
-final def pt  (that:  Array[Array[Double]]): Array[Array[Double]] = {
-   var oneDThis = oneDDoubleArray( this.v  )   // construct a DoubleMatrix for the receiver
-   var oneDThat = oneDTransposeDoubleArray(that)  // construct a DoubleMatrix for the argument
-   var Arows = Nrows; var Acolumns = Ncols
-   var Ccolumns = that(0).length
-   var result = new Array[Double](Arows*Ccolumns)
-   
-    scalaExec.Interpreter.NativeLibsObj.ccObj.pt(oneDThis, Arows, Acolumns, oneDThat, Ccolumns, result)
-    
-    var rd = Array.ofDim[Double](Arows, Ccolumns)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < Arows ) {
-      c = 0
-      while (c < Ccolumns) {
-        rd(r)(c) = result(cnt)
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-    rd
-} 
-  
-/*
-Solve a general linear system  A*x = b.
 
-     int solv(double a[],double b[],int n)
-       a = array containing system matrix A in row order
-            (altered to L-U factored form by computation)
-       b = array containing system vector b at entry and
-           solution vector x at exit
-       n = dimension of system
-      return:  0 -> normal exit
-              -1 -> singular input
-*/
-  final def ccsolv( b: Array[Double])  = {
-    val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj
 
-    val bc = b.clone
-      // get a one-D representation of the RichDouble2DArray
-    val ad = scalaSci.RichDouble2DArray.oneDDoubleArray(this.v)
-    val M = Nrows
-   
-    // solve using C routine
-    ccObj.solv(ad, bc, M)
-    
-    bc
-    }
-    
-  
-/*
-Solve a symmetric positive definite linear system S*x = b.
 
-     int solvps(double a[],double b[],int n)
-       a = array containing system matrix S (altered to
-            Cholesky upper right factor by computation)
-       b = array containing system vector b as input and
-           solution vector x as output
-       n = dimension of system
-      return: 0 -> normal exit
-              1 -> input matrix not positive definite
-*/
-final def ccsolvps( b: Array[Double]) = {
-    val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj  // get the object for native CCMath based operations
-  
-    val bc = b.clone
-      // get a one-D representation of the RichDouble2DArray
-    val ad = oneDDoubleArray(this.v)  
-    val M = Nrows
-    
-    // solve using C routine
-    ccObj.solvps( ad, bc, M)
-    
-    bc
-    }
-    
-  
-  //  solve a real right upper triangular linear system 
-  final def ccsolvru(b: Array[Double]) = {
-      val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj  // get the object for native CCMath based operations
-  
-     val bc = b.clone
-      // get a one-D representation of the RichDouble2DArray
-     val ad = oneDDoubleArray(this.v)  
-     val M = Nrows
-    
-    // solve using C routine
-     ccObj.solvru( ad, bc, M)
-    
-    bc
-  }
-  
-
-  
-   
-// Compute the singular values of a real m by n matrix A.
-  final   def ccsvdval():Array[Double] = {
-    val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj
-    val dlmThis = oneDDoubleArray(this.v)
-    val M = this.Nrows;  val N = this.Ncols
-    
-    val d = new Array[Double](N)   // for the singular values
-    
-    ccObj.svdval(d, dlmThis, M, N)
-    
-    d   // return the singular values
-    
-    }
-    
-  final  def ccsvd():(Array[Array[Double]], Array[Double],Array[Array[Double]]) = {
-    val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj
-
-    val dlmThis = oneDDoubleArray(this.v)
-    val M = this.Nrows; val N = this.Ncols
-    val d = new Array[Double](N)  // for the singular values
-    val u =  new Array[Double](M*M)
-    val v = new Array[Double](N*N)
-    
-    ccObj.svduv(d, dlmThis, u, M, v, N)
-        
-    var ud = Array.ofDim[Double](M, M)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < M ) {
-      c = 0
-      while (c < M) {
-        ud(r)(c) = u(cnt).asInstanceOf[Double]
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-        
-    var vd = Array.ofDim[Double](N, N)
-    cnt = 0
-    r = 0; c = 0
-    while (r < N ) {
-      c = 0
-      while (c < N) {
-        vd(r)(c) = v(cnt).asInstanceOf[Double]
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-    
-    (ud, d, vd)
-    
-  }
-  
-  
-  // invert the matrix
-
-  final  def ccinv():(Array[Array[Double]])  = {
-    val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj
-
-    val dlmThis = oneDDoubleArray(this.v)
-    val M = this.Nrows
-    ccObj.minv(dlmThis, M)    // invert in-place 
-    
-     // construct the inverse output array as 2-D array
-    val dd = Array.ofDim[Double](M, M)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < M ) {
-      c = 0
-      while (c < M) {
-        dd(r)(c) = dlmThis(cnt).asInstanceOf[Double]
-        cnt += 1
-        c += 1
-      }
-      r += 1
-     }
-     
-    dd
-    }
-    
-  
 
   def  jj(B: RichDouble2DArray): RichDouble2DArray = {
      jj (B.v)
@@ -3834,114 +3625,7 @@ def  jj(B: Array[Array[Double]]): RichDouble2DArray = {
 
 
 	
-    
-    
-// fast CUDA multiplication using CUBLAS
-final def *@  (that:  Array[Array[Double]]): Array[Array[Double]] = {
-   var flmThis = oneDFloatArray( this.v  )   // construct a FloatMatrix for the receiver
-   var flmThat = oneDFloatArray(that)  // construct a FloatMatrix for the argument
-   var Arows = Nrows; var Acolumns = Ncols
-   var Ccolumns = that(0).length
-   var result = new Array[Float](Arows*Ccolumns)
-   var km = scalaExec.Interpreter.NativeLibsObj.cudaObj
-    // perform the multiplication using CUDA
-   km.sgemm(flmThis, Arows, Acolumns, flmThat, Ccolumns, result)
-   
-    var rd = Array.ofDim[Double](Arows, Ccolumns)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < Arows ) {
-      c = 0
-      while (c < Ccolumns) {
-        rd(r)(c) = result(cnt).asInstanceOf[Double]
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-    rd
-}   
-  
-// fast CUDA multiplication
-final def *@@  (that:  Array[Array[Double]]): Array[Array[Double]] = {
-   var flmThis = oneDFloatArray( this.v  )   // construct a FloatMatrix for the receiver
-   var flmThat = oneDFloatArray(that)  // construct a FloatMatrix for the argument
-   var Arows = Nrows; var Acolumns = Ncols
-   var Ccolumns = that(0).length
-   var result = new Array[Float](Arows*Ccolumns)
-   var km = scalaExec.Interpreter.NativeLibsObj.cudaObj
-    // perform the multiplication using CUDA
-   km.cmm(flmThis, flmThat, result, Arows, Acolumns, Ccolumns)
-   
-    var rd = Array.ofDim[Double](Arows, Ccolumns)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < Arows ) {
-      c = 0
-      while (c < Ccolumns) {
-        rd(r)(c) = result(cnt).asInstanceOf[Double]
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-    rd
-}   
-  
-  
-// fast CUDA multiplication using CUBLAS, double precision
-final def *&&& (that:  Array[Array[Double]]): Array[Array[Double]] = {
-   var flmThis = oneDDoubleArray( this.v  )   // construct a FloatMatrix for the receiver
-   var flmThat = oneDDoubleArray(that)  // construct a FloatMatrix for the argument
-   var Arows = Nrows; var Acolumns = Ncols
-   var Ccolumns = that(0).length
-   var result = new Array[Double](Arows*Ccolumns)
-   var km = scalaExec.Interpreter.NativeLibsObj.cudaObj
-    // perform the multiplication using CUDA
-   km.dgemm(flmThis, Arows, Acolumns, flmThat, Ccolumns, result)
-   
-    var rd = Array.ofDim[Double](Arows, Ccolumns)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < Arows ) {
-      c = 0
-      while (c < Ccolumns) {
-        rd(r)(c) = result(cnt)
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-    rd
-}   
- 
 
-// fast CUDA multiplication, double precision
-final def *&&  (that:  Array[Array[Double]]): Array[Array[Double]] = {
-   var flmThis = oneDDoubleArray( this.v  )   // construct a FloatMatrix for the receiver
-   var flmThat = oneDDoubleArray(that)  // construct a FloatMatrix for the argument
-   var Arows = Nrows; var Acolumns = Ncols
-   var Ccolumns = that(0).length
-   var result = new Array[Double](Arows*Ccolumns)
-   var km = scalaExec.Interpreter.NativeLibsObj.cudaObj
-    // perform the multiplication using CUDA
-   km.cmmd(flmThis, flmThat, result, Arows, Acolumns, Ccolumns)
-   
-    var rd = Array.ofDim[Double](Arows, Ccolumns)
-    var cnt = 0
-    var r = 0; var c = 0
-    while (r < Arows ) {
-      c = 0
-      while (c < Ccolumns) {
-        rd(r)(c) = result(cnt)
-        cnt += 1
-        c += 1
-      }
-      r += 1
-    }
-    rd
-}   
-  
  
 // multiplication using openblas
 final def *** (that:  Array[Array[Double]]) = {
@@ -3957,7 +3641,7 @@ final def *** (that:  Array[Array[Double]]) = {
    var lda = Arows
    var ldb = Acolumns
    var ldc = Arows
-      // perform the multiplication using CUDA  
+      // perform the multiplication using OpenBlas
     cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, Arows, Ccolumns,  Acolumns, alpha, flmThis, lda, flmThat, ldb, beta, 
          result, ldc)
    
@@ -3993,7 +3677,7 @@ final def *** (that: RichDouble2DArray) = {
    val lda = Arows
    val ldb = Acolumns
    val ldc = Arows
-      // perform the multiplication using CUDA  
+      // perform the multiplication using OpenBlas
     cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, Arows, Ccolumns,  Acolumns, alpha, flmThis, lda, flmThat, ldb, beta, 
          result, ldc)
    
@@ -5207,224 +4891,6 @@ final def  normInf(Mmat: Mat): Double = {
   
   final def trace() = scalaSci.math.LinearAlgebra.LinearAlgebra.trace(v)
 
-  
-  // GSL based routines
-final def gslsvdsolve(b_data: Array[Double]) = {  
-  val Nrows = this.Nrows
-  val Ncols = this.Ncols
-  val  A_copy = this.clone
-  
-    // convert data to 1-D row major form as required by GSL
-  val A_1d = scalaSci.MatrixConv.rowMajor1DFrom2D(  A_copy.getArray )
-  
-  val A_data = new DoublePointer(A_1d: _*)
-  val Am  = gsl_matrix_view_array (A_data, Nrows, Ncols)
-  
-  val V = new Array[Double](Ncols * Ncols)
-  val V_data = new DoublePointer(V: _*)  
-  val Vm = gsl_matrix_view_array(V_data, Ncols, Ncols)
- 
-  val work = gsl_vector_alloc(Ncols) 
-  
-  val S = gsl_vector_alloc(Nrows) 
-  
-  gsl_linalg_SV_decomp(Am.matrix,  Vm.matrix,  S, work)
-  
-  var x = gsl_vector_alloc (Nrows)
-  var bdv = new DoublePointer(b_data: _*)  
-  var b= gsl_vector_view_array (bdv,  Nrows)
-
-    gsl_linalg_SV_solve(Am.matrix, Vm.matrix, S, b.vector, x)  
-    
-  var xv = new Array[Double](Nrows)
-  var k=0
-  while (k<Nrows) {
-    xv(k) = x.data.get(k)
-    k+=1
-  }
-  
-  gsl_vector_free(S)
-  gsl_vector_free(work) 
-  gsl_vector_free (x)
-  
-    xv
-}
-
- final def gsllusolve(bdata: RichDouble2DArray):Array[Double] = {
-   var Nrows = bdata.Nrows
-   var b_data = new Array[Double](Nrows)
-   var k=0
-   while (k<Nrows) {
-     b_data(k) = bdata(k, 0)
-     k+=1
-   }
-   gsllusolve(b_data)
- }
- 
-   final def gslluinvert()= {
-    var Nrows = this.Nrows
-    var Ncols = this.Ncols
-    if (Ncols == Nrows) {
-    var a_1d = scalaSci.MatrixConv.rowMajor1DFrom2D(  this.getArray )
-    var a_data = new DoublePointer(a_1d: _*)
-    var m  = gsl_matrix_view_array (a_data, Nrows, Ncols)
-      
-   var inverse = gsl_matrix_alloc( Ncols, Nrows)
-   
-   var p = gsl_permutation_calloc (Nrows)
-
-  var s = new Array[Int](1)
-  gsl_linalg_LU_decomp (m.matrix, p, s)
-  gsl_linalg_LU_invert(m.matrix, p, inverse)
- 
-   var vinverse = gsl_matrix_view_array(inverse.data, Nrows,  Ncols)
-  
-    
-    var rdm = new RichDouble2DArray(Nrows, Ncols)
-   var r = 0; var c= 0
-  while (r<Nrows) {
-    c = 0
-    while (c<Ncols) {
-      rdm(r,c) = vinverse.matrix.data.get(r*Nrows+c)
-      c += 1
-    } 
-    r += 1
-      
-     }
-     rdm
-    }
-    else
-      this
-  
- }
-
-  
-  
-  // solve a linear system using GSL native library
-  final def gsllusolve(b_data: Array[Double]):Array[Double] = {
-
-  var Nrows = this.Nrows
-  var Ncols = this.Ncols
-  var a_1d = scalaSci.MatrixConv.rowMajor1DFrom2D(  v )
-  var a_data = new DoublePointer(a_1d: _*)
-  var m  = gsl_matrix_view_array (a_data, Nrows, Ncols)
-
-  var bdv = new DoublePointer(b_data: _*)  
-  var b= gsl_vector_view_array (bdv,  Nrows)
-
-  var x = gsl_vector_alloc (Nrows)
-  
-  var p = gsl_permutation_alloc (Nrows)
-
-  var s = new Array[Int](1)
-  gsl_linalg_LU_decomp (m.matrix, p, s)
- 
-  gsl_linalg_LU_solve (m.matrix, p, b.vector, x)
-
-  
-  var xv = new Array[Double](Nrows)
-  var k=0
-  while (k<Nrows) {
-    xv(k) = x.data.get(k)
-    k+=1
-  }
-  
-  gsl_permutation_free (p)
-  gsl_vector_free (x)
-
-  xv  
-}
-
-  final def gslqrsolve(b_data: Array[Double]):Array[Double] = {
-
-  var Nrows = this.Nrows
-  var Ncols = this.Ncols
-  var a_1d = scalaSci.MatrixConv.rowMajor1DFrom2D(  v )
-  var a_data = new DoublePointer(a_1d: _*)
-  var m  = gsl_matrix_view_array (a_data, Nrows, Ncols)
-
-  var bdv = new DoublePointer(b_data: _*)  
-  var b= gsl_vector_view_array (bdv,  Nrows)
-
-  var x = gsl_vector_alloc (Nrows)
-  
-  var p = gsl_permutation_alloc (Nrows)
-
- var minRowsCols= Nrows
- if (Ncols < minRowsCols)  minRowsCols = Ncols
-  var tau = gsl_vector_alloc(minRowsCols)
-  gsl_linalg_QR_decomp (m.matrix,  tau)
- 
-  gsl_linalg_QR_solve (m.matrix, tau, b.vector, x)
-
-    
-  var xv = new Array[Double](Nrows)
-  var k=0
-  while (k<Nrows) {
-    xv(k) = x.data.get(k)
-    k+=1
-  }
-  
-  gsl_permutation_free (p);
-  gsl_vector_free (x);
-
-  xv  
-}
-
-  
-  
-  
-  
-  final def gsleig() = {
-    
-    // convert the RichDouble2DArray to 1-d raw major GSL format
-   var md = scalaSci.MatrixConv.rowMajor1DFrom2D( v )
-   var dpmd = new DoublePointer(md: _*)
-   var M = this.Nrows
-   var N = this.Ncols
-   var m = gsl_matrix_view_array(dpmd, M, N )
-   var eval = gsl_vector_complex_alloc(M)
-   var evec = gsl_matrix_complex_alloc(M, N)
-   
-    var w = gsl_eigen_nonsymmv_alloc(M)
-    
-    // compute the eigendecomposition using GSL
-    gsl_eigen_nonsymmv(m.matrix, eval, evec, w)
-    
-    gsl_eigen_nonsymmv_free(w)
-  var evals = new scalaSci.RichDouble2DArray(M, 2)
-  var evecsReal = new scalaSci.RichDouble2DArray(M, N)
-  var evecsImag = new scalaSci.RichDouble2DArray(M, N)
-  
-    var i = 0
-    while  (i < M) {
-      var eval_i = gsl_vector_complex_get( eval, i)
-      
-      var evec_i = gsl_matrix_complex_column(evec, i)
-      
-      // get computed eigenvalues i
-      evals(i, 0) = eval_i.dat.get(0)
-      evals(i, 1) = eval_i.dat.get(1)
-      
-      // get computed eigenvector i
-      var j = 0
-      while (j < N) {
-          var z = gsl_vector_complex_get(evec_i.vector, j)
-          evecsReal(i, j) = z.dat.get(0)
-          evecsImag(i, j) = z.dat.get(1)
-          j += 1
-          }
-          i += 1
-        }
-          
-  
-        gsl_vector_complex_free(eval)
-        gsl_matrix_complex_free(evec)
-        
-    (evals, evecsReal, evecsImag)
-  }
-
-  
   final def nreig() = {
     com.nr.eig.UnsymmeigScala.unsymmeig(this.getv)
   }
@@ -5848,38 +5314,7 @@ object RichDouble2DArray {
   var numThreads = ConcurrencyUtils.getNumberOfThreads
 
   var resizeFactor = 1.5
-  
-   
-  
-  // FFT routines  based on CUDA
-  def jcufft(x: Array[Float]): Array[Float] = {
-           val  outputJCufft = x.clone()
-           val  plan = new cufftHandle()
-           val siz = x.length
-           JCufft.cufftPlan1d(plan, siz, cufftType.CUFFT_C2C, 1)
-           JCufft.cufftExecC2C(plan, outputJCufft, outputJCufft, JCufft.CUFFT_FORWARD)
-           JCufft.cufftDestroy(plan)
-           outputJCufft
- }
-  
-  def jcufft(xd: Array[Double]):Array[Double] = {
-      val siz = xd.length
-      val x =  new Array[Float] (siz)   
-      var k = 0
-      while (k<siz) {
-        x(k) = xd(k).asInstanceOf[Float]; 
-        k+=1
-      }
-       val rf = jcufft(x)
-       val xr = new Array[Double](siz)
-       k = 0
-      while (k<siz) {
-        xr(k) = rf(k) 
-        k+=1
-      }
-        
-    xr
-  }  
+
     
    
 final def oneDFloatArray(x: Array[Array[Double]]) = 

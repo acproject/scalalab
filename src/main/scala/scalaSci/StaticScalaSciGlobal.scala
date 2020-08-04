@@ -20,11 +20,6 @@ import  org.apache.commons.math3.linear.ArrayRealVector
 import no.uib.cipr.matrix.DenseMatrix
 import org.ejml.data.DenseMatrix64F
 
-  import org.bytedeco.javacpp.gsl._
-  import org.bytedeco.javacpp.DoublePointer
-
-
-
 /*
  
  This important trait defines some global operations available in ScalaSci, 
@@ -618,99 +613,11 @@ final def cross(a: scalaSci.Vec, b: scalaSci.Vec): scalaSci.Vec = {
 final def cross(a: scalaSci.Matrix, b: scalaSci.Matrix): scalaSci.Matrix = {
   a.cross(b)
    }  
-   
-  
-  final def gslsvd(A: RichDouble2DArray) = {
-
-  val Nrows = A.Nrows
-  val Ncols = A.Ncols
-  val  A_copy = A.clone
-  
-  val A_1d = scalaSci.MatrixConv.rowMajor1DFrom2D(  A_copy )
-  
-  val A_data = new DoublePointer(A_1d: _*)
-  val Am  = gsl_matrix_view_array (A_data, Nrows, Ncols)
-  
-  val V = new Array[Double](Ncols * Ncols)
-  val V_data = new DoublePointer(V: _*)  
-  val Vm = gsl_matrix_view_array(V_data, Ncols, Ncols)
- 
-  val work = gsl_vector_alloc(Ncols) 
-  
-  val S = gsl_vector_alloc(Nrows) 
-  
-  val rv = gsl_linalg_SV_decomp(Am.matrix,  Vm.matrix,  S, work)
-  
-  gsl_vector_free(S)
-  gsl_vector_free(work)
-  
-  val   Umr = new RichDouble2DArray(Nrows, Ncols)
-  val   Sr = new RichDouble1DArray(Nrows)
-  val Vmr = new RichDouble2DArray(Ncols, Ncols)
-  
-    // get NrowsXNcols orthogonal matrix U
-    var r=0;     var c=0;  var cnt=0
-   while (r < Nrows) {
-     c = 0
-     while (c < Ncols)
-       {
-         Umr(r, c) = Am.matrix.data.get( cnt )
-         cnt += 1
-         c += 1
-       }
-       r += 1
-   }
-   // get NcolsXNcols orthogonal square matrix V
-    r = 0; cnt = 0
-    while (r < Ncols) {
-     c = 0
-     while (c < Ncols)
-       {
-         Vmr(r, c) = Vm.matrix.data.get(cnt)
-         cnt += 1
-         c += 1
-       }
-       r += 1
-   }
-   
-    // get the Ncols singular values
-   r = 0
-   while (r < Ncols) {
-     Sr(r) = S.data.get(r)
-     r += 1
-   }
-  
-    
-  (Umr, Sr, Vmr)  
-}
-
-final def gslsvdsolve(A: RichDouble2DArray, b: Array[Double]) = {
-  A.gslsvdsolve(b)
-}
 
     // Signal Processing Routines
  final def  fft(sig: Array[Double]):(Array[Double], Array[Double]) =  scalaSci.FFT.FFTScala.fft(sig)
        //scalaSci.FFT.ApacheFFT.fft(sig)
    
-  
-  // perform FFT using the GSL native library
-final def gslfft(sig: Array[Double]) = {
-  var n= sig.length
-  var cpdata = sig.clone  
-    
-
-  var work = gsl_fft_real_workspace_alloc (n)
-  var real = gsl_fft_real_wavetable_alloc (n)  
-  
-  
-  gsl_fft_real_transform (cpdata, 1, n, real, work);
-  
-
-  gsl_fft_real_wavetable_free (real)
-  
-    cpdata
-  
-} 
 
    // Signal Processing Routines
  final def  fft(matr: Array[Array[Double]]):(Array[Array[Double]], Array[Array[Double]]) =  scalaSci.FFT.FFTScala.fft(matr)
@@ -5035,103 +4942,7 @@ em(5) = 1.0e-5   // the minimal nonneglectable singular value
 final def svd(A: RichDouble2DArray) = A.svd()
 
   
-/*
-Solve a general linear system  A*x = b.
 
-     int solv(double a[],double b[],int n)
-       a = array containing system matrix A in row order
-            (altered to L-U factored form by computation)
-       b = array containing system vector b at entry and
-           solution vector x at exit
-       n = dimension of system
-      return:  0 -> normal exit
-              -1 -> singular input
-*/
-
-final def ccsolv(A: RichDouble2DArray, b: Array[Double])  = {
-  A.ccsolv(b)
- }
- 
-  
-/*
-Solve a symmetric positive definite linear system S*x = b.
-
-     int solvps(double a[],double b[],int n)
-       a = array containing system matrix S (altered to
-            Cholesky upper right factor by computation)
-       b = array containing system vector b as input and
-           solution vector x as output
-       n = dimension of system
-      return: 0 -> normal exit
-              1 -> input matrix not positive definite
-*/
-
-final def ccsolvps(A: RichDouble2DArray, b: Array[Double]) = {
-  A.ccsolvps(b)
-}  
-  
- 
-/*
-
-     Solve an upper right triangular linear system T*x = b.
-
-     int solvru(double *a,double *b,int n)
-       a = pointer to array of upper right triangular matrix T
-       b = pointer to array of system vector
-           The computation overloads this with the
-           solution vector x.
-       n = dimension (dim(a)=n*n,dim(b)=n)
-      return value: f = status flag, with 0 -> normal exit
-                                         -1 -> system singular
-*/
-final def ccsolvru(A: Array[Double], b: Array[Double]) = {
-   val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj
-
-   val bc = b.clone 
-   ccObj.solvru(A, bc, b.length)
-   
-    bc
-  }
-    
-    
-    
-  
-  /*
-     Solve a tridiagonal linear system M*x = y.
-
-     void solvtd(double a[],double b[],double c[],double x[],int m)
-       a = array containing m+1 diagonal elements of M
-       b = array of m elements below the main diagonobalValues.al of M
-       c = array of m elements above the main diagonal
-       x = array containing the system vector y initially, and
-           the solution vector at exit (m+1 elements)
-       m = dimension parameter ( M is (m+1)x(m+1) )
-*/
-final def ccsolvtd(A: Array[Double], b: Array[Double], c: Array[Double], x: Array[Double]) = {
-  val ccObj = scalaExec.Interpreter.NativeLibsObj.ccObj
-  
-  val xc = x.clone
-  
-  ccObj.solvtd(A, b, c, xc, xc.length)
-
-  xc
-}  
-    
-  
-  
-  
-final def ccsvd(A: RichDouble2DArray) = A.ccsvd()  // full SVD decomposition
-
-    
-  
-final def ccsvdval(A: RichDouble2DArray) = A.ccsvdval()  // singular values only  
-  
-final def ccinv(A: RichDouble2DArray) = A.ccinv()  // invert using a C native routine 
-
-  
-  
-	
-	
   
   
 final def norm2(M: RichDouble2DArray): Double = {
@@ -6394,15 +6205,7 @@ final def asvd(x: RichDoubleDoubleArray): SvdResults = {
  final def nrqr(x: RichDouble2DArray): QRResults  = {
    nrqr(x.getv())
    }
-   
-    // C based autocorrelation
-final def ccautcor(x: Array[Double], lag: Int) = {
-  var N = x.length
-  var ccobj = scalaExec.Interpreter.NativeLibsObj.ccObj
-  var corrs = new Array[Double](lag)
-  ccobj. ccautcor(x, N, corrs, lag)
-  corrs
-}
+
 
 }                       
                

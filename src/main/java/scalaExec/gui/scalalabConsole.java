@@ -215,7 +215,6 @@ public class scalalabConsole  extends Console  {
   jsciFile = jarPathOfClass("JSci.maths.wavelet.Cascades").toString().replace("file:/", "/");
 
   javacppFile = jarPathOfClass("org.bytedeco.javacpp.DoublePointer").toString().replace("file:/", "/");
-  gslFile = jarPathOfClass("org.bytedeco.javacpp.presets.gsl").toString().replace("file:/", "/");
   openblasFile = jarPathOfClass("org.bytedeco.javacpp.presets.openblas").toString().replace("file:/", "/");
   mtjColtSGTFile = jarPathOfClass("no.uib.cipr.matrix.AbstractMatrix").toString().replace("file:/", "/");
   ApacheCommonsFile = jarPathOfClass("org.apache.commons.math3.ode.nonstiff.ThreeEighthesIntegrator").toString().replace("file:/", "/");
@@ -245,7 +244,6 @@ public class scalalabConsole  extends Console  {
    jfreechartFile =jarPathOfClass("org.jfree.chart.ChartFactory").toString().replace("file:/", "");
    jsciFile = jarPathOfClass("JSci.maths.wavelet.Cascades").toString().replace("file:/", "");
    javacppFile = jarPathOfClass("org.bytedeco.javacpp.DoublePointer").toString().replace("file:/", "");
-   gslFile = jarPathOfClass("org.bytedeco.javacpp.presets.gsl").toString().replace("file:/", "");
    openblasFile = jarPathOfClass("org.bytedeco.javacpp.presets.openblas").toString().replace("file:/", "");
   
    mtjColtSGTFile = jarPathOfClass("no.uib.cipr.matrix.AbstractMatrix").toString().replace("file:/", "");
@@ -273,7 +271,6 @@ public class scalalabConsole  extends Console  {
   
          if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac) {
           scalaSettings.classpath().append(javacppFile);
-          scalaSettings.classpath().append(gslFile);
           scalaSettings.classpath().append(openblasFile);
          }
          
@@ -298,21 +295,6 @@ public class scalalabConsole  extends Console  {
      }
      
      
-      
-     /** Create a new interpreter initialized with CUDA library */
-      public void createInterpreterForResetCUDA()  {
-  
-          commonCreateInterpreterCode();
-          
-          GlobalValues.interpreterTypeForPane = GlobalValues.CUDAMat;
-          
-          scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsCUDAScala);   // interpret the basic imports
-     
-          GlobalValues.scalalabMainFrame.tabbedToolbars.setTitleAt(2,  "CUDA-Mat");
-          
-          System.out.println("CUDA Interpreter created");
-          
-      }
 
 
      
@@ -345,8 +327,6 @@ public class scalalabConsole  extends Console  {
           
          if (GlobalValues.interpreterTypeForPane == GlobalValues.EJMLMat)  {
           scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsEJMLScala);   // interpret the basic imports
-  if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac)        
-          scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(scalaExec.Interpreter.GlobalValues.warmUpGSLScript);
          }
      
          initFrame.dispose();
@@ -434,8 +414,6 @@ public class scalalabConsole  extends Console  {
           
           scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsEJMLScala);   // interpret the basic imports
 
-    if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac)        
-        scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(scalaExec.Interpreter.GlobalValues.warmUpGSLScript);      
 
           GlobalValues.scalalabMainFrame.tabbedToolbars.setTitleAt(2,  "EJML-Mat");
           
@@ -527,10 +505,7 @@ public class scalalabConsole  extends Console  {
           GlobalValues.interpreterTypeForPane = GlobalValues.EJMLMat;
          
           scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsEJMLScala);   // interpret the basic imports
-          
-           if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac)        
-      scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(scalaExec.Interpreter.GlobalValues.warmUpGSLScript);
-     
+
           GlobalValues.scalalabMainFrame.tabbedToolbars.setTitleAt(2,  "EJML-Mat");
           
           
@@ -571,23 +546,6 @@ public class scalalabConsole  extends Console  {
 
    }
 
-
-      
-      /** Create a new basic imports Eigen interpreter. */
-      public void createInterpreterForResetEigen()  {
-  
-          commonCreateInterpreterCode();
-          
-          GlobalValues.interpreterTypeForPane = GlobalValues.EIGENMat;
-          
-          scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsEigenScala);   // interpret the basic  imports
-          
-          GlobalValues.scalalabMainFrame.tabbedToolbars.setTitleAt(2,  "Eigen-Mat");
-           
-
-           GlobalValues.scalalabMainFrame.setTitle(scalaExec.Interpreter.GlobalValues.buildTitle());
-
-      }
 
       
       /** Create a new basic imports for D2Das1DMat interpreter. */
@@ -660,16 +618,13 @@ public class scalalabConsole  extends Console  {
      if (GlobalValues.interpreterTypeForPane  == GlobalValues.EJMLMat) 
      {
          scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsEJMLScala);
-if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac)        
-         scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(scalaExec.Interpreter.GlobalValues.warmUpGSLScript);
      }   // interpret the basic imports
      
      else {
           scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsScala);   // interpret the basic imports
-if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac)        
-          scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(scalaExec.Interpreter.GlobalValues.warmUpGSLScript);
+
      }
-     
+
           if (GlobalValues.ScalaSciClassPathComponents.contains(classpath)==false)
               GlobalValues.ScalaSciClassPathComponents.add(classpath);
          
@@ -797,9 +752,7 @@ if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostI
          scalaExec.Interpreter.GlobalValues.globalInterpreter =  new  scala.tools.nsc.interpreter.IMain(scalaSettings, new ReplReporterImpl(scalaSettings));
           
           scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(GlobalValues.basicImportsEJMLScala);   // interpret the basic imports
-  if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac)        
-    scalaExec.Interpreter.GlobalValues.globalInterpreter.interpret(scalaExec.Interpreter.GlobalValues.warmUpGSLScript);
-     
+
           for (int k=0; k<classpath.size(); k++) {
               String clsp = (String)classpath.elementAt(k);
               if (GlobalValues.ScalaSciClassPathComponents.contains(clsp)==false)
