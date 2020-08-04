@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:scalalab" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="" />
+    <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Chaos/LorenzCForRungeKutta.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Chaos/ikedaFloat.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/EJMLExamples/BenchmarkKalmanEJML.javaEJML" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/EJMLExamples/BenchmarkKalmanEJML.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/EJMLExamples/PCAEJML.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/EJMLExamples/benchBlock.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/FFT/nativeFFT.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Fitting/LinearFittingFitTab.sssci" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Fitting/LinearFittingFitTab.sssci" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/General/WindMillExample.javaSci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/General/WindMills.scalaExample" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Interpolation/BilinearInterp.sssci" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +42,9 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -21,11 +57,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/build.sbt" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructuralSearchPlugin">
+    <searchConfiguration name="Unnamed" created="1596539082502" text="NativeLibsObj" recursive="false" caseInsensitive="false" type="JAVA" pattern_context="default" scope_type="PROJECT" scope_descriptor="" history="1">
+      <constraint name="__context__" within="" contains="" />
+    </searchConfiguration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -40,6 +83,18 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1196" y="542" key="#Project_Structure" timestamp="1589968202518">
       <screen x="0" y="0" width="3840" height="2084" />
@@ -53,6 +108,14 @@
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
     <state x="1375" y="923" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.3840.2084@0.0.3840.2084" timestamp="1593167240263" />
+    <state x="1360" y="680" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596538583309">
+      <screen x="0" y="0" width="3840" height="2084" />
+    </state>
+    <state x="1360" y="680" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.3840.2084@0.0.3840.2084" timestamp="1596538583309" />
+    <state x="1064" y="842" width="1015" height="475" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog" timestamp="1596539082495">
+      <screen x="0" y="0" width="3840" height="2084" />
+    </state>
+    <state x="1064" y="842" width="1015" height="475" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.3840.2084@0.0.3840.2084" timestamp="1596539082495" />
     <state x="1193" y="594" key="FileChooserDialogImpl" timestamp="1593167356892">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
@@ -61,6 +124,10 @@
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
     <state x="713" y="668" key="SettingsEditor/0.0.3840.2084@0.0.3840.2084" timestamp="1593167325515" />
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup" timestamp="1596539046325">
+      <screen x="0" y="0" width="3840" height="2084" />
+    </state>
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup/0.0.3840.2084@0.0.3840.2084" timestamp="1596539046325" />
     <state x="592" y="760" key="new project wizard" timestamp="1589968331115">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>

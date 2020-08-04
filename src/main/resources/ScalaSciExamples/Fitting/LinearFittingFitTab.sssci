@@ -10,7 +10,7 @@
    */
 
    // create the data arrays
-   var xx = Array(0.4, 3.5, 6.7,  8.6, 9.8, 15.6, 26.8, 45.8 )
+   var xx = new Vec(Array(0.4, 3.5, 6.7,  8.6, 9.8, 15.6, 26.8, 45.8 ))
    var yy = 3.4*xx + 6.5*vrand(xx.length)
 
  // fit a linear model, the fitting coefficients are returned in fp.a and fp.b
