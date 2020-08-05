@@ -362,7 +362,7 @@ public class scalaSciToolboxes {
                {    // path not already exist in ScalaSciClassPath
           GlobalValues.ScalaSciClassPathComponents.add(forScalaToolboxJarName);  // append to the ScalaSciClassPathComponents
             
-          // GlobalValues.globalInterpreter.settings().classpath().append(forScalaToolboxJarName);    // append the path to the current Scala Interpreter
+           GlobalValues.globalInterpreter.settings().classpath().append(forScalaToolboxJarName);    // append the path to the current Scala Interpreter
           // ??? why classpath is not updated dynamically
           
           // rebuild the class path property (i.e. "ScalaSciClassPathProp") in order to account for the new path

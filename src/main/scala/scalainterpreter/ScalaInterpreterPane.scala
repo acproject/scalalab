@@ -202,7 +202,7 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
       settings.classpath.append(scalalab.JavaGlobals.JASFile)     // Java Algebra System
       settings.classpath.append(scalalab.JavaGlobals.LAPACKFile)    // LAPACK linear algebra 
       settings.classpath.append(scalalab.JavaGlobals.ARPACKFile)  // ARPACK linear algebra 
-       
+
     }
   
 
@@ -269,8 +269,16 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
             // MouseMotionListener is used to display values of the variables when mouse cursor is moved over their name 
           if (GlobalValues.mouseMotionListenerForJSyntax == true)
             scalaExec.Interpreter.GlobalValues.editorPane.addMouseMotionListener( new PaneMouseMotionAdapter())
-          
-            scalaExec.Interpreter.GlobalValues.globalInterpreter = new scala.tools.nsc.interpreter.IMain( settings,  new ReplReporterImpl(settings)){
+
+           settings.deprecation.value = false
+
+           if (scalaExec.Interpreter.GlobalValues.compilerOptimizationFlag == true)
+             settings.optimise.value = true
+           else
+             settings.optimise.value = false
+
+
+           scalaExec.Interpreter.GlobalValues.globalInterpreter = new scala.tools.nsc.interpreter.IMain( settings,  new ReplReporterImpl(settings)){
              override protected def parentClassLoader = pane.getClass.getClassLoader
                         }
             scalaExec.Interpreter.GlobalValues.globalInterpreter.setContextClassLoader()

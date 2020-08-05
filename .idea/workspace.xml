@@ -21,131 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScalaLab.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaLab.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CCOps.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CCOps.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CUDASig.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCublas-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCublas2-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCudaDriver-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCudaRuntime-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCufft-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCurand-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCusolver-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/JCusparse-0.8.0-windows-x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Jeigen-mac-64.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Jeigen-onefat.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/NROps.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/aparapi_x86.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/aparapi_x86_64.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gsl-linux-x86.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gsl-linux-x86_64.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gsl-macosx-x86_64.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gsl-platform.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gsl-windows-x86.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gsl-windows-x86_64.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gsl.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jline-3.15.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jline.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libCCOps.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libCUDASig.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libGSLOps.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCublas-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCublas2-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCudaDriver-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCudaRuntime-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCufft-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCurand-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCusolver-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libJCusparse-0.8.0-linux-x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libKernelOps.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libNROps.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libaparapi_x86.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libaparapi_x86_64.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libaparapi_x86_64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libcppScalabLab.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libfreebsdCCOps.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libgcc86_s.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libgcc_s.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libgcc_s_sjlj-1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libjeigen-linux-32.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libjeigen-linux-64.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libjeigen.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/CCOps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/CCOpsJNI.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/CCOpsJNI.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/CCOps_CCOps.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/compileFreeBSD.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/compileLinux.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/compileLinux.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/compileMacOSX.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/compileSolaris.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CCOps/compileWin.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/CUDAFFTExample.gsci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/CUDAOps_KernelOps.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/KernelOps.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/KernelOps.cu" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/KernelOps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/KernelOpsWin.cu" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/commands.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/testCUDA.gssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDAOps/testCUDAMul.gssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/CUDASig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/CUDASig_CUDASig.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/dwtHaar1D.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/dwtHaar1D.cu" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/dwtHaar1D_kernel.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/dwtHaar1D_kernel.cuh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/nvidiat.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CUDASig/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GSLJava/GSLJava_GSLOps.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GSLJava/GSLOps.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GSLJava/GSLOps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/Conversion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/DenseAggregator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/DenseMatrix.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/DenseMatrixComplex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/DenseSorter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/FileHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/JeigenJna.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/Leonardo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/MatrixUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/OsHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/Shortcuts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/SparseMatrixCCS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/SparseMatrixLil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/SparseMatrixLilSorter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/SparseMatrixLilSorter2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TestDenseAggregator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TestDenseSorter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TestEigenvalues.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TestJeigen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TestJeigenPerf.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TestSimple.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TestUnsupported.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/TicToc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/Timer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jeigen/statistics/Statistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jblas/SimpleBlas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jblas/SimpleBlas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/NativeLibsObj.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/gui/CompileExecutePaneActionJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/gui/CompileExecutePaneActionJava.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/gui/scalalabConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/gui/scalalabConsole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/FileTreeExplorer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/FileTreeExplorer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalalab/JavaGlobals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalalab/JavaGlobals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalalab/JavaUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalalab/JavaUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/CUDAMat.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/D2Das1DMat.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/D2Das1DMat.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/FFT/FFTScala.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/FFT/FFTScala.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/GSLMacro.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/RichDouble2DArray.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/RichDouble2DArray.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/StaticMathsCUDA.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/StaticScalaSciGlobal.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/StaticScalaSciGlobal.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/jeigen/jStaticMaths.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/jeigen/jeigenMat.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/math/plot/PlotFunctional.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/math/plot/PlotFunctional.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/pRD2D.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaSciToolboxes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaSciToolboxes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/scalainterpreter/ScalaInterpreterPane.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalainterpreter/ScalaInterpreterPane.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -237,10 +114,10 @@
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
     <state x="713" y="668" key="SettingsEditor/0.0.3840.2084@0.0.3840.2084" timestamp="1593167325515" />
-    <state x="1057" y="382" width="1023" height="1368" key="find.popup" timestamp="1596553360695">
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup" timestamp="1596628300070">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
-    <state x="1057" y="382" width="1023" height="1368" key="find.popup/0.0.3840.2084@0.0.3840.2084" timestamp="1596553360695" />
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup/0.0.3840.2084@0.0.3840.2084" timestamp="1596628300070" />
     <state x="592" y="760" key="new project wizard" timestamp="1589968331115">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
