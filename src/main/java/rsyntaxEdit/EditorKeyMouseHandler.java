@@ -302,7 +302,7 @@ for (int k=0; k<sf.length; k++) {
             break;
                 
             case KeyEvent.VK_F7:
-                
+                new scala.tools.nsc.interpreter.shell.ReplCompletion(GlobalValues.globalInterpreter, new scala.tools.nsc.interpreter.shell.Accumulator());
                 break;
 
                 

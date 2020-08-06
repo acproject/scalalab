@@ -510,7 +510,118 @@ clList.addKeyListener(new KeyListener() {
     
         
    }
-   
+
+
+    public static void displayCompletionList(String nameOfType, List<String> elems)
+    {
+        DefaultListModel dcl = new DefaultListModel();  // the model for the completion list
+
+        GlobalValues.nameOfType = nameOfType;  // keep class name in order to construct fully qualified names for accessing static members
+
+        for (String x: elems)  {
+       //     System.out.println("dcl add "+x);
+            dcl.addElement(x);
+         }
+
+        final JList clList = new JList(dcl);   // the completion's list
+
+        // register our specialized list cell renderer that displays static members in bold
+      //  clList.setCellRenderer(new FontCellRenderer());
+
+        JScrollPane  completionPane = new JScrollPane(clList);
+
+        GlobalValues.completionFrame  = new JFrame("Completion List for "+nameOfType);
+        Point p = null;
+        if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true)  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
+            p = scalaExec.Interpreter.GlobalValues.editorPane.getCaret().getMagicCaretPosition();
+        else
+            p = scalaExec.Interpreter.GlobalValues.globalRSyntaxEditorPane.getCaret().getMagicCaretPosition();
+
+        if (p != null) {
+            if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true)  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
+                SwingUtilities.convertPointToScreen(p, scalaExec.Interpreter.GlobalValues.editorPane);
+            else
+                SwingUtilities.convertPointToScreen(p, scalaExec.Interpreter.GlobalValues.globalRSyntaxEditorPane);
+
+            p.x = p.x + 2;
+            p.y = p.y + 20;
+            GlobalValues.completionFrame.setLocation(p.x, p.y);
+
+        }
+
+        GlobalValues.completionFrame.add(completionPane);
+        int numOfComponentsForCompletion =  dcl.getSize();
+        if (numOfComponentsForCompletion > GlobalValues.maxItemsToDisplayAtCompletions)
+            numOfComponentsForCompletion = GlobalValues.maxItemsToDisplayAtCompletions;
+        if (numOfComponentsForCompletion < 5) // some minimum size
+            numOfComponentsForCompletion = 5;
+
+
+        int approxPixelsPerItem = 20;    // approx. how many pixels to take vertically for a list item
+        // in order to approximate the vertical size of the completion list
+        GlobalValues.completionFrame.setSize(600,  numOfComponentsForCompletion*approxPixelsPerItem);
+        GlobalValues.completionFrame.setVisible(true);
+
+        clList.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    processListSelection(clList);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+
+        // add a KeyListener to the JList in order to destroy itself with either ESC or ENTER
+        clList.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyValue = e.getKeyCode();
+                switch (keyValue) {
+
+                    case   KeyEvent.VK_ENTER:
+                        processListSelection(clList);
+
+                        break;
+
+                    case   KeyEvent.VK_ESCAPE:      // disposes the completion's list frame
+                        GlobalValues.completionFrame.dispose();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet.");
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+
+
+    }
    
         private static void  processListSelection(JList clList) {
                   String selected = (String) clList.getSelectedValue();

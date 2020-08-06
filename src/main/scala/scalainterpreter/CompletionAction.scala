@@ -8,14 +8,13 @@ import javax.swing.text.JTextComponent
 import jsyntaxpane.actions.gui.ComboCompletionDialog
 import jsyntaxpane.actions.DefaultSyntaxAction
 import scalaExec.Interpreter.GlobalValues
-import tools.nsc.interpreter.Completion.ScalaCompleter
-import collection.JavaConversions
+import tools.nsc.interpreter.shell.ReplCompletion
+import scala.jdk.CollectionConverters 
 
 //  the action triggered with the F7 key within the JSyntaxPane
-class CompletionActionPrev( completer: ScalaCompleter ) extends DefaultSyntaxAction( "COMPLETION" ) {
-  private var dlg: ComboCompletionDialog = null
-
-  override def actionPerformed( target: JTextComponent, sdoc: SyntaxDocument, dot: Int, e: ActionEvent ) {
+class CompletionAction( completer: ReplCompletion )  {
+  
+   def complete(  ) {
 
      var posAutoCompletion =  -1
        
@@ -30,8 +29,8 @@ class CompletionActionPrev( completer: ScalaCompleter ) extends DefaultSyntaxAct
          
       else {  // the user has not selected text
          
-       var pos = target.getCaretPosition-1  
-       var doc = target.getDocument()
+       var pos = GlobalValues.editorPane.getCaretPosition-1  
+       var doc = GlobalValues.editorPane.getDocument()
       
        
        var exited = false
@@ -70,24 +69,38 @@ class CompletionActionPrev( completer: ScalaCompleter ) extends DefaultSyntaxAct
   
       val cwlen = cw.length()
       val m = completer.complete( cw, cwlen )
+      
+     //var dcl = new javax.swing.DefaultListModel  // the model for the completion list
+    // var  clList = new javax.swing.JList(dcl)   // the completion's list
+    
+   //  GlobalValues.nameOfType = nameOfType  // keep class name in order to construct fully qualified names for accessing static members       
+     // register our specialized list cell renderer that displays static members in bold
+   //  clList.setCellRenderer(new javax.swing.FontCellRenderer())
+     
 
+      var completionList = new java.util.ArrayList[String]
+      
     // nothing to complete
    if( m.candidates.isEmpty )  return
   else {
       val off = start + m.cursor
-      target.select( off, start + cwlen )
+   //   target.select( off, start + cwlen )
 
     m.candidates match {
-         case one :: Nil =>
-            target.replaceSelection( one )
-         case more =>
-            if( dlg == null ) {
-                dlg = new ComboCompletionDialog( GlobalValues.editorPane )
-            }
-
-       dlg.displayFor( cw.substring( m.cursor ), JavaConversions.seqAsJavaList( more ))
-       // dlg.displayFor( cw.substring( posAutoCompletion ), JavaConversions.seqAsJavaList( more ))
-      }
-      }
+        // case one :: Nil =>
+          //  System.out.println(one)
+      case more =>
+           more.foreach { 
+            candidate =>   completionList.add(candidate.toString) 
+           }
+             
+             }
+             
+           //  System.out.println("size of Completion List = "+completionList.size)
+             
+             scalaSciCommands.Inspect.displayCompletionList(cw, completionList)
+             
+           }
+      
    }
 }

@@ -55,6 +55,7 @@ import scala.concurrent._
 import ExecutionContext.Implicits.global
 
 object ScalaInterpreterPaneGlobals {
+    var completer = new scala.tools.nsc.interpreter.shell.ReplCompletion(GlobalValues.globalInterpreter)
     var defaultImportsProcessed = false    // default imports have been processed by the interpreter
     var defaultCursor = scalaExec.Interpreter.GlobalValues.editorPane.getCursor
     var lastResult = scala.tools.nsc.interpreter.Results.Success    // last result evalutaed by the Scala interpreter
@@ -545,8 +546,17 @@ def setupKeyActions() = {
         }
       }
     )
-    
-    
+
+
+  imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F7,  0), "complete")
+  amap.put("complete", new AbstractAction {
+    def actionPerformed(e: ActionEvent) {
+      new CompletionAction( ScalaInterpreterPaneGlobals.completer).complete()
+    }
+  }
+  )
+
+
       imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0), "EDTexecute")
       imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK), "EDTexecute")  
     
@@ -658,7 +668,7 @@ def setupKeyActions() = {
     
     
     
-    installScalaCompletion()    
+    installScalaCompletion()
     
                
     imap.put(KeyStroke.getKeyStroke( KeyEvent.VK_F2, 0), "executeToCursor")
@@ -713,13 +723,12 @@ def setupKeyActions() = {
 
 
 def installScalaCompletion() = {
-    val imap = scalaExec.Interpreter.GlobalValues.editorPane.getInputMap( JComponent.WHEN_FOCUSED )
+ /*   val imap = scalaExec.Interpreter.GlobalValues.editorPane.getInputMap( JComponent.WHEN_FOCUSED )
     val amap = scalaExec.Interpreter.GlobalValues.editorPane.getActionMap()
       
-  //  ScalaInterpreterPaneGlobals.completer = new PresentationCompilerCompleter(GlobalValues.globalInterpreter)
-    //imap.put(KeyStroke.getKeyStroke( KeyEvent.VK_F7, 0), "scalaCompletionHelp")
-    //amap.put("scalaCompletionHelp",  new CompletionAction( ScalaInterpreterPaneGlobals.completer))
-    
+    imap.put(KeyStroke.getKeyStroke( KeyEvent.VK_F7, 0), "scalaCompletionHelp")
+    amap.put("scalaCompletionHelp",  new CompletionAction( ScalaInterpreterPaneGlobals.completer))
+   */
 }
 
   
