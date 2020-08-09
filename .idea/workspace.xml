@@ -21,40 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScalaLab.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaLab.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ScalaLab.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/akka-actor.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/repl.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-actors-migration.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-actors.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-compiler-doc.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-compiler-interactive.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-compiler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libScala/scala-compiler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-continuations-library.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-continuations-plugin.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-continuations.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-library.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libScala/scala-library.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-parser-combinators.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-partest.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-reflect.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libScala/scala-reflect.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-repl-frontend.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-swing.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-testkit.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scala-xml.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libScala/scalap.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/gui/scalalabConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/gui/scalalabConsole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/FileTreeExplorer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/FileTreeExplorer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/FileTreeKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/FileTreeKeyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLabActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLabActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalalab/JavaGlobals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalalab/JavaGlobals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalalab/JavaUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalalab/JavaUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/D2Das1DMat.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/D2Das1DMat.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/MatrixFactory.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/MatrixFactory.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/RichDouble2DArray.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/RichDouble2DArray.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/RichNumber.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/RichNumber.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSci/math/plot/PlotFunctional.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalaSci/math/plot/PlotFunctional.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalainterpreter/ScalaInterpreterPane.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalainterpreter/ScalaInterpreterPane.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

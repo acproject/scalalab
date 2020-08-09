@@ -17,6 +17,10 @@ scalacOptions ++= Seq("-deprecation", "-unchecked",
 
 description         := "A MATLAB-like environment)"
 
+
+artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) => "ScalaLab.jar"
+}
+
 unmanagedJars in Compile ++= (file("./libScala") * "*.jar").classpath
 
 unmanagedJars in Compile ++= (file("./extralib") * "*.jar").classpath
