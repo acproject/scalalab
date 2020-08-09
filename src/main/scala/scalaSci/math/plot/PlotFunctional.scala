@@ -40,15 +40,8 @@ if (scalaExec.Interpreter.GlobalValues.globalInterpreter == null) {
       if (scalalab.JavaGlobals.reflectFile != null)
         set.classpath.append(scalalab.JavaGlobals.reflectFile)  // scala-reflect file
       set.classpath.append(scalalab.JavaGlobals.swingFile)  // Scala Swing
-      set.classpath.append(scalalab.JavaGlobals.actorsMigrationFile)
-      set.classpath.append(scalalab.JavaGlobals.xmlScalaFile)
-      set.classpath.append(scalalab.JavaGlobals.parserCombinatorsFile)
-      set.classpath.append(scalalab.JavaGlobals.akkaActorsFile)
-      set.classpath.append(scalalab.JavaGlobals.jfreechartFile)   // ScalaLab JFreeChart library
-      set.classpath.append(scalalab.JavaGlobals.numalFile)  // NUMAL library
-      set.classpath.append(scalalab.JavaGlobals.mtjColtSGTFile)  // MTJ, Colt, SGT libraries
-      set.classpath.append(scalalab.JavaGlobals.ApacheCommonsFile)   // Apache Common Maths current version file
-      set.classpath.append(scalalab.JavaGlobals.ejmlFile)   // EJML file
+
+         set.classpath.append(scalalab.JavaGlobals.ejmlFile)   // EJML file
       set.classpath.append(scalalab.JavaGlobals.rsyntaxTextAreaFile)
       set.classpath.append(scalalab.JavaGlobals.jblasFile)   // JBLAS file
       set.classpath.append(scalalab.JavaGlobals.jsciFile)   // JSci library
@@ -90,13 +83,6 @@ if (scalaExec.Interpreter.GlobalValues.globalInterpreter == null) {
       if (scalalab.JavaGlobals.reflectFile != null)
         set.classpath.append(scalalab.JavaGlobals.reflectFile)  // scala-reflect file
       set.classpath.append(scalalab.JavaGlobals.swingFile)  // Scala Swing
-      set.classpath.append(scalalab.JavaGlobals.actorsMigrationFile)
-      set.classpath.append(scalalab.JavaGlobals.xmlScalaFile)
-      set.classpath.append(scalalab.JavaGlobals.parserCombinatorsFile)
-      set.classpath.append(scalalab.JavaGlobals.akkaActorsFile)
-      set.classpath.append(scalalab.JavaGlobals.jfreechartFile)   // ScalaLab JFreeChart library
-      set.classpath.append(scalalab.JavaGlobals.numalFile)  // NUMAL library
-      set.classpath.append(scalalab.JavaGlobals.mtjColtSGTFile)  // MTJ, Colt, SGT libraries
       set.classpath.append(scalalab.JavaGlobals.ApacheCommonsFile)   // Apache Common Maths current version file
       set.classpath.append(scalalab.JavaGlobals.ejmlFile)   // EJML file
       set.classpath.append(scalalab.JavaGlobals.rsyntaxTextAreaFile)

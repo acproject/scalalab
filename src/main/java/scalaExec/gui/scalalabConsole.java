@@ -205,12 +205,7 @@ public class scalalabConsole  extends Console  {
   reflectFile = jarPathOfClass("scala.reflect.api.Names").toString().replace("file:/","/");
   swingFile = jarPathOfClass("scala.swing.Swing").toString().replace("file:/", "/");
   
-  
-    akkaActorsFile = jarPathOfClass("akka.actor.dsl.Inbox").toString().replace("file:/", "/");
-    actorsMigrationFile = jarPathOfClass("scala.actors.migration.ActorDSL").toString().replace("file:/", "/");
-    parserCombinatorsFile = jarPathOfClass("scala.util.parsing.combinator.RegexParsers").toString().replace("file:/", "/");
-    xmlScalaFile = jarPathOfClass("scala.xml.factory.XMLLoader").toString().replace("file:/", "/");
-      
+
   jfreechartFile =jarPathOfClass("org.jfree.chart.ChartFactory").toString().replace("file:/", "/");
   jsciFile = jarPathOfClass("JSci.maths.wavelet.Cascades").toString().replace("file:/", "/");
 
@@ -235,12 +230,7 @@ public class scalalabConsole  extends Console  {
    reflectFile = jarPathOfClass("scala.reflect.api.Names").toString().replace("file:/","");
    swingFile = jarPathOfClass("scala.swing.Swing").toString().replace("file:/", "");
    
-   
-    akkaActorsFile = jarPathOfClass("akka.actor.dsl.Inbox").toString().replace("file:/", "");
-    actorsMigrationFile = jarPathOfClass("scala.actors.migration.ActorDSL").toString().replace("file:/", "");
-    parserCombinatorsFile = jarPathOfClass("scala.util.parsing.combinator.RegexParsers").toString().replace("file:/", "");
-    xmlScalaFile = jarPathOfClass("scala.xml.factory.XMLLoader").toString().replace("file:/", "");
-    
+
    jfreechartFile =jarPathOfClass("org.jfree.chart.ChartFactory").toString().replace("file:/", "");
    jsciFile = jarPathOfClass("JSci.maths.wavelet.Cascades").toString().replace("file:/", "");
    javacppFile = jarPathOfClass("org.bytedeco.javacpp.DoublePointer").toString().replace("file:/", "");
@@ -273,12 +263,7 @@ public class scalalabConsole  extends Console  {
           scalaSettings.classpath().append(javacppFile);
           scalaSettings.classpath().append(openblasFile);
          }
-         
-         scalaSettings.classpath().append(actorsMigrationFile);
-         scalaSettings.classpath().append(xmlScalaFile);
-         scalaSettings.classpath().append(akkaActorsFile);
-         scalaSettings.classpath().append(parserCombinatorsFile);
-         
+
          scalaSettings.classpath().append(jfreechartFile);
          scalaSettings.classpath().append(jsciFile);
          scalaSettings.classpath().append(mtjColtSGTFile);

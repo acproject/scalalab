@@ -401,11 +401,7 @@ class loadEditorTextAction extends AbstractAction  {
                       File.pathSeparator+scalalab.JavaGlobals.libFile+
                       File.pathSeparator+scalalab.JavaGlobals.reflectFile+
                       File.pathSeparator+scalalab.JavaGlobals.swingFile+
-                      File.pathSeparator+scalalab.JavaGlobals.akkaActorsFile+
-                      File.pathSeparator+scalalab.JavaGlobals.actorsMigrationFile+
-                      File.pathSeparator+scalalab.JavaGlobals.parserCombinatorsFile+
-                      File.pathSeparator+scalalab.JavaGlobals.xmlScalaFile+
-                      File.pathSeparator+scalalab.JavaGlobals.ejmlFile+
+                        File.pathSeparator+scalalab.JavaGlobals.ejmlFile+
                       File.pathSeparator+scalalab.JavaGlobals.jblasFile+
                       File.pathSeparator+scalalab.JavaGlobals.mtjColtSGTFile+
                       File.pathSeparator+scalalab.JavaGlobals.ApacheCommonsFile+   

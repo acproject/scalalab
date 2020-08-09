@@ -8,11 +8,11 @@ scalaVersion        := "2.13.3"
 
 javaOptions   ++= Seq("-Xss", "4M", "-Xmx", "8G")
 
-javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
+javacOptions ++= Seq("-source", "11", "-target", "11")
 
 
 scalacOptions ++= Seq("-deprecation", "-unchecked",
-"closure-invocations", "l:method", "-target:jvm-1.8")
+ "closure-invocations", "l:method", "-target:jvm-1.11")
 
 
 description         := "A MATLAB-like environment)"

@@ -287,11 +287,7 @@ def  jjs(b: Array[Double], Arows: Int, Acols: Int, Ccols: Int)  = {
                               1.0,  data,  0, 
                               Nrows,  b, 0,  Acols,
                               0.0, c.data, 0, Nrows); 
-    	   
-   
- //_root_.jeigen.JeigenJna.Jeigen.dense_multiply(numRowsForThread,  Acols , Ccols, a, b, c)
-  
-            // copy contribution of the thread onto the final result
+
   
    c
   }

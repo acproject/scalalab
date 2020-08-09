@@ -9,11 +9,6 @@ public class JavaGlobals {
     static public String reflectFile;  // Scala-reflect file
     static public String swingFile;  // Scala Swing library file
     
-    static public String akkaActorsFile;  // Scala Akka Actors file
-    static public String actorsMigrationFile; // Scala actors migration file
-    static public String parserCombinatorsFile; // Scala parser combinators file
-    static public String xmlScalaFile;  // Scala XML library
-    
     static public String rsyntaxTextAreaFile;   //  RSyntaxTextArea file
     
     static public String jfreechartFile;   // JFreeChart library file

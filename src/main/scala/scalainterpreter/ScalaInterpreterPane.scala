@@ -182,12 +182,7 @@ class ScalaInterpreterPane  extends  JPanel with CustomizableFont {
       settings.classpath.append(scalalab.JavaGlobals.libFile)     // Scala Libraries
       settings.classpath.append(scalalab.JavaGlobals.reflectFile)  // scala-reflect file
       settings.classpath.append(scalalab.JavaGlobals.swingFile)  // Scala Swing
-    
-      settings.classpath.append(scalalab.JavaGlobals.akkaActorsFile)
-      settings.classpath.append(scalalab.JavaGlobals.actorsMigrationFile)
-      settings.classpath.append(scalalab.JavaGlobals.parserCombinatorsFile)
-      settings.classpath.append(scalalab.JavaGlobals.xmlScalaFile)
-      
+
     
       settings.classpath.append(scalalab.JavaGlobals.jfreechartFile)   // ScalaLab JFreeChart library
       settings.classpath.append(scalalab.JavaGlobals.numalFile)  // NUMAL library

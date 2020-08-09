@@ -3594,9 +3594,7 @@ def  jj(B: Array[Array[Double]]): RichDouble2DArray = {
                               1.0,  a,  0, 
                               numRowsForThread,  b, 0,  Acols,
                               0.0, c, 0, numRowsForThread); 
-    	   
-   
- //_root_.jeigen.JeigenJna.Jeigen.dense_multiply(numRowsForThread,  Acols , Ccols, a, b, c)
+
   
             // copy contribution of the thread onto the final result
   cnt = 0

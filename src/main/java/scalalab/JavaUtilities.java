@@ -49,11 +49,6 @@ public class JavaUtilities {
     JavaGlobals.libFile =  jarPathOfClass("scala.io.Source").toString().replace("file:/","/");
     JavaGlobals.reflectFile = jarPathOfClass("scala.reflect.api.Names").toString().replace("file:/","/");
     
-    JavaGlobals.akkaActorsFile = jarPathOfClass("akka.actor.dsl.Inbox").toString().replace("file:/", "/");
-    JavaGlobals.actorsMigrationFile = jarPathOfClass("scala.actors.migration.ActorDSL").toString().replace("file:/", "/");
-    JavaGlobals.parserCombinatorsFile = jarPathOfClass("scala.util.parsing.combinator.RegexParsers").toString().replace("file:/", "/");
-    JavaGlobals.xmlScalaFile = jarPathOfClass("scala.xml.factory.XMLLoader").toString().replace("file:/", "/");
-    
     JavaGlobals.swingFile = jarPathOfClass("scala.swing.Swing").toString().replace("file:/", "/");
     JavaGlobals.jfreechartFile =jarPathOfClass("org.jfree.chart.ChartFactory").toString().replace("file:/", "/");
     JavaGlobals.jsciFile = jarPathOfClass("JSci.maths.wavelet.Cascades").toString().replace("file:/", "/");
@@ -86,11 +81,7 @@ public class JavaUtilities {
     JavaGlobals.reflectFile = jarPathOfClass("scala.reflect.api.Names").toString().replace("file:/","");
     JavaGlobals.swingFile = jarPathOfClass("scala.swing.Swing").toString().replace("file:/", "");
     
-    JavaGlobals.akkaActorsFile = jarPathOfClass("akka.actor.dsl.Inbox").toString().replace("file:/", "");
-    JavaGlobals.actorsMigrationFile = jarPathOfClass("scala.actors.migration.ActorDSL").toString().replace("file:/", "");
-    JavaGlobals.parserCombinatorsFile = jarPathOfClass("scala.util.parsing.combinator.RegexParsers").toString().replace("file:/", "");
-    JavaGlobals.xmlScalaFile = jarPathOfClass("scala.xml.factory.XMLLoader").toString().replace("file:/", "");
-    
+
     JavaGlobals.jfreechartFile =jarPathOfClass("org.jfree.chart.ChartFactory").toString().replace("file:/", "");
     JavaGlobals.jsciFile = jarPathOfClass("JSci.maths.wavelet.Cascades").toString().replace("file:/", "");
     if (GlobalValues.hostIsLinux64 || GlobalValues.hostIsWin64 || GlobalValues.hostIsMac) {
@@ -116,10 +107,6 @@ public class JavaUtilities {
           System.out.println("libFile = "+JavaGlobals.libFile);
           System.out.println("reflectFile= "+JavaGlobals.reflectFile);
           System.out.println("swingFile = "+JavaGlobals.swingFile);
-          System.out.println("Actors migration file = "+JavaGlobals.actorsMigrationFile);
-          System.out.println("Scala Parser Combinators File = "+JavaGlobals.parserCombinatorsFile);
-          System.out.println("Scala XML file = "+JavaGlobals.xmlScalaFile);
-          
           
           System.out.println("MTJColtSGTFile = "+JavaGlobals.mtjColtSGTFile);
           System.out.println("JBLAS File = "+JavaGlobals.jblasFile);

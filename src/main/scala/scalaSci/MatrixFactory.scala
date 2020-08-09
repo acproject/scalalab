@@ -15,7 +15,6 @@ object MatrixFactory {
       case x: scalaSci.MTJ.Mat =>    new scalaSci.MTJ.Mat(Nrows, Ncols)
       case x: scalaSci.EJML.Mat =>  new scalaSci.EJML.Mat(Nrows, Ncols)
       case x: scalaSci.JBLAS.Mat =>  new scalaSci.JBLAS.Mat(Nrows, Ncols)
-      case x: scalaSci.jeigen.Mat =>  new scalaSci.jeigen.Mat(Nrows, Ncols)
           
         // companion object class is passed as type
       case x:Any=>  
@@ -38,10 +37,7 @@ object MatrixFactory {
          else 
          if  (className == "class scalaSci.JBLAS.StaticMathsJBLAS$") 
               new scalaSci.JBLAS.Mat(Nrows, Ncols)
-         else 
-          if  (className == "class scalaSci.jeigen.StaticMathsEigen$") 
-             new scalaSci.jeigen.Mat(Nrows, Ncols)
-        else   {  
+          else   {
         println("other of type "+ x.getClass);  
        new scalaSci.Mat(Nrows, Ncols)  
           }  

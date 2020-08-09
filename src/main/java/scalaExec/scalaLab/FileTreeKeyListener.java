@@ -189,11 +189,7 @@ public class FileTreeKeyListener extends KeyAdapter {
                  command[2] =   "."+File.pathSeparator+GlobalValues.scalalabLibPath+File.pathSeparator+
                           scalalab.JavaGlobals.libFile+ File.pathSeparator+
                          scalalab.JavaGlobals.reflectFile+File.pathSeparator+
-                         scalalab.JavaGlobals.akkaActorsFile+File.pathSeparator+
-                         scalalab.JavaGlobals.actorsMigrationFile+File.pathSeparator+
-                         scalalab.JavaGlobals.parserCombinatorsFile+File.pathSeparator+
-                         scalalab.JavaGlobals.xmlScalaFile+File.pathSeparator+
-                         scalalab.JavaGlobals.ejmlFile+File.pathSeparator+
+                        scalalab.JavaGlobals.ejmlFile+File.pathSeparator+
                          scalalab.JavaGlobals.jblasFile+File.pathSeparator+
                          scalalab.JavaGlobals.jsciFile+File.pathSeparator+
                          scalalab.JavaGlobals.jsciFile+File.pathSeparator+
@@ -211,10 +207,6 @@ public class FileTreeKeyListener extends KeyAdapter {
                  command[5] = "."+File.pathSeparator+GlobalValues.scalalabLibPath+File.pathSeparator+
                          scalalab.JavaGlobals.libFile+File.pathSeparator+
                          scalalab.JavaGlobals.reflectFile+File.pathSeparator+
-                         scalalab.JavaGlobals.akkaActorsFile+File.pathSeparator+
-                         scalalab.JavaGlobals.actorsMigrationFile+File.pathSeparator+
-                         scalalab.JavaGlobals.parserCombinatorsFile+File.pathSeparator+
-                         scalalab.JavaGlobals.xmlScalaFile+File.pathSeparator+
                          scalalab.JavaGlobals.ejmlFile+File.pathSeparator+
                          scalalab.JavaGlobals.jblasFile+File.pathSeparator+
                          scalalab.JavaGlobals.jsciFile+File.pathSeparator+
