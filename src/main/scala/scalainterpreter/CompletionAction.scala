@@ -68,8 +68,10 @@ class CompletionAction( completer: ReplCompletion )  {
 
   
       val cwlen = cw.length()
-      val m = completer.complete( cw, cwlen )
-      
+      val completions =  completer.complete( cw, cwlen )
+     val candidates = completions.candidates.filterNot(_.isUniversal)
+
+
      //var dcl = new javax.swing.DefaultListModel  // the model for the completion list
     // var  clList = new javax.swing.JList(dcl)   // the completion's list
     
@@ -81,26 +83,24 @@ class CompletionAction( completer: ReplCompletion )  {
       var completionList = new java.util.ArrayList[String]
       
     // nothing to complete
-   if( m.candidates.isEmpty )  return
+   if( candidates.isEmpty )  return
   else {
-      val off = start + m.cursor
-   //   target.select( off, start + cwlen )
-
-    m.candidates match {
-        // case one :: Nil =>
-          //  System.out.println(one)
-      case more =>
-           more.foreach { 
-            candidate =>   completionList.add(candidate.toString) 
-           }
+    candidates.foreach { x =>
+      var xs = x.toString
+      var candidateLen = "CompletionCandidate(".length
+      var xss = xs.substring(candidateLen, xs.length)
+      var xname = xss.substring(0, xss.indexOf(","))
+      completionList.add (xname)
+      }
+    }
              
-             }
+
              
            //  System.out.println("size of Completion List = "+completionList.size)
              
              scalaSciCommands.Inspect.displayCompletionList(cw, completionList)
              
-           }
+
       
    }
 }

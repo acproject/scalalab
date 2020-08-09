@@ -518,49 +518,15 @@ clList.addKeyListener(new KeyListener() {
 
         GlobalValues.nameOfType = nameOfType;  // keep class name in order to construct fully qualified names for accessing static members
 
-        for (String x: elems)  {
-       //     System.out.println("dcl add "+x);
+        for (String x: elems)
             dcl.addElement(x);
-         }
+
 
         final JList clList = new JList(dcl);   // the completion's list
 
         // register our specialized list cell renderer that displays static members in bold
       //  clList.setCellRenderer(new FontCellRenderer());
 
-        JScrollPane  completionPane = new JScrollPane(clList);
-
-        GlobalValues.completionFrame  = new JFrame("Completion List for "+nameOfType);
-        Point p = null;
-        if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true)  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
-            p = scalaExec.Interpreter.GlobalValues.editorPane.getCaret().getMagicCaretPosition();
-        else
-            p = scalaExec.Interpreter.GlobalValues.globalRSyntaxEditorPane.getCaret().getMagicCaretPosition();
-
-        if (p != null) {
-            if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true)  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
-                SwingUtilities.convertPointToScreen(p, scalaExec.Interpreter.GlobalValues.editorPane);
-            else
-                SwingUtilities.convertPointToScreen(p, scalaExec.Interpreter.GlobalValues.globalRSyntaxEditorPane);
-
-            p.x = p.x + 2;
-            p.y = p.y + 20;
-            GlobalValues.completionFrame.setLocation(p.x, p.y);
-
-        }
-
-        GlobalValues.completionFrame.add(completionPane);
-        int numOfComponentsForCompletion =  dcl.getSize();
-        if (numOfComponentsForCompletion > GlobalValues.maxItemsToDisplayAtCompletions)
-            numOfComponentsForCompletion = GlobalValues.maxItemsToDisplayAtCompletions;
-        if (numOfComponentsForCompletion < 5) // some minimum size
-            numOfComponentsForCompletion = 5;
-
-
-        int approxPixelsPerItem = 20;    // approx. how many pixels to take vertically for a list item
-        // in order to approximate the vertical size of the completion list
-        GlobalValues.completionFrame.setSize(600,  numOfComponentsForCompletion*approxPixelsPerItem);
-        GlobalValues.completionFrame.setVisible(true);
 
         clList.addMouseListener(new MouseListener() {
 
@@ -620,12 +586,47 @@ clList.addKeyListener(new KeyListener() {
             }
         });
 
+        JScrollPane  completionPane = new JScrollPane(clList);
+
+        GlobalValues.completionFrame  = new JFrame("Completion List for "+nameOfType);
+        Point p = null;
+        if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true)  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
+            p = scalaExec.Interpreter.GlobalValues.editorPane.getCaret().getMagicCaretPosition();
+        else
+            p = scalaExec.Interpreter.GlobalValues.globalRSyntaxEditorPane.getCaret().getMagicCaretPosition();
+
+        if (p != null) {
+            if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true)  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
+                SwingUtilities.convertPointToScreen(p, scalaExec.Interpreter.GlobalValues.editorPane);
+            else
+                SwingUtilities.convertPointToScreen(p, scalaExec.Interpreter.GlobalValues.globalRSyntaxEditorPane);
+
+            p.x = p.x + 2;
+            p.y = p.y + 20;
+            GlobalValues.completionFrame.setLocation(p.x, p.y);
+
+        }
+
+        GlobalValues.completionFrame.add(completionPane);
+        int numOfComponentsForCompletion =  dcl.getSize();
+        if (numOfComponentsForCompletion > GlobalValues.maxItemsToDisplayAtCompletions)
+            numOfComponentsForCompletion = GlobalValues.maxItemsToDisplayAtCompletions;
+        if (numOfComponentsForCompletion < 5) // some minimum size
+            numOfComponentsForCompletion = 5;
+
+
+        int approxPixelsPerItem = 20;    // approx. how many pixels to take vertically for a list item
+        // in order to approximate the vertical size of the completion list
+        GlobalValues.completionFrame.setSize(600,  numOfComponentsForCompletion*approxPixelsPerItem);
+        GlobalValues.completionFrame.setVisible(true);
+
+
 
     }
    
         private static void  processListSelection(JList clList) {
                   String selected = (String) clList.getSelectedValue();
-                 
+
                   int leftParenthesisIndex = selected.indexOf('(');
                 if (leftParenthesisIndex != -1) 
                     selected = selected.substring(0, leftParenthesisIndex+1);
@@ -641,7 +642,7 @@ clList.addKeyListener(new KeyListener() {
               else
                  if (GlobalValues.methodNameSpecified==false)
                     selected = "." + selected;  // append a dot
-                  
+
                 
           if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true) {  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
                 scalaExec.Interpreter.GlobalValues.editorPane.setSelectionStart(GlobalValues.selectionStart);

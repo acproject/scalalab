@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScalaLab.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaLab.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scalaSciCommands/Inspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaSciCommands/Inspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalainterpreter/CompletionAction.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalainterpreter/CompletionAction.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,10 +114,10 @@
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
     <state x="713" y="668" key="SettingsEditor/0.0.3840.2084@0.0.3840.2084" timestamp="1593167325515" />
-    <state x="1057" y="382" width="1023" height="1368" key="find.popup" timestamp="1596974857730">
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup" timestamp="1596984669745">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
-    <state x="1057" y="382" width="1023" height="1368" key="find.popup/0.0.3840.2084@0.0.3840.2084" timestamp="1596974857730" />
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup/0.0.3840.2084@0.0.3840.2084" timestamp="1596984669745" />
     <state x="592" y="760" key="new project wizard" timestamp="1589968331115">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
