@@ -31,7 +31,7 @@ class FontCellRenderer extends JComponent implements ListCellRenderer {
             private Color foreground;
             private int currentIndex;
        
-            
+
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             currentText = (String)value;  // used by paintComponent to draw the text
@@ -322,7 +322,7 @@ for (int k=0; k<classMethods.length; k++) {
     
      GlobalValues.nameOfType = nameOfType;  // keep class name in order to construct fully qualified names for accessing static members       
      // register our specialized list cell renderer that displays static members in bold
-     clList.setCellRenderer(new FontCellRenderer());
+    // clList.setCellRenderer(new FontCellRenderer());
      
      scanMethodsFields = new Vector(numCompletionItems);
      
@@ -521,11 +521,10 @@ clList.addKeyListener(new KeyListener() {
         for (String x: elems)
             dcl.addElement(x);
 
-
         final JList clList = new JList(dcl);   // the completion's list
 
         // register our specialized list cell renderer that displays static members in bold
-      //  clList.setCellRenderer(new FontCellRenderer());
+     //   clList.setCellRenderer(new FontCellRenderer());
 
 
         clList.addMouseListener(new MouseListener() {
@@ -625,8 +624,8 @@ clList.addKeyListener(new KeyListener() {
     }
    
         private static void  processListSelection(JList clList) {
-                  String selected = (String) clList.getSelectedValue();
-
+                 String selected = (String) clList.getSelectedValue();
+/*
                   int leftParenthesisIndex = selected.indexOf('(');
                 if (leftParenthesisIndex != -1) 
                     selected = selected.substring(0, leftParenthesisIndex+1);
@@ -642,7 +641,7 @@ clList.addKeyListener(new KeyListener() {
               else
                  if (GlobalValues.methodNameSpecified==false)
                     selected = "." + selected;  // append a dot
-
+*/
                 
           if (scalaExec.Interpreter.GlobalValues.completionIsForSyntaxPane == true) {  // completion is for JSyntaxPane editor (in order to display the completion popup properly)
                 scalaExec.Interpreter.GlobalValues.editorPane.setSelectionStart(GlobalValues.selectionStart);

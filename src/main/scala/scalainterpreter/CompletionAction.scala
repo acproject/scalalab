@@ -28,74 +28,85 @@ class CompletionAction( completer: ReplCompletion )  {
          } 
          
       else {  // the user has not selected text
-         
-       var pos = GlobalValues.editorPane.getCaretPosition-1  
-       var doc = GlobalValues.editorPane.getDocument()
-      
-       
-       var exited = false
-        // take word part before cursor position
-       var wb = ""
-       var offset = pos
-       while (offset >= 0 && exited==false) {
-         var ch = doc.getText(offset, 1).charAt(0)
-         if (ch == '.') {
-               posAutoCompletion = offset-2   // replace the text after '.'
-               if (posAutoCompletion<0) posAutoCompletion=0
-          }
+           var editor = scalaExec.Interpreter.GlobalValues.editorPane   // get editor instance
 
-         var isalphaNumeric = ( ch >= 'a' && ch <='z')  || (ch >= 'A' && ch <='Z') || (ch >= '0' && ch <='9') || ch=='.'  || ch=='_' || ch=='$'
-         if (!isalphaNumeric)  exited=true
-          else {
-           wb = wb + ch
-           offset -= 1
-          }
-          }
-    
-    if (posAutoCompletion ==  -1)  // a method name is not specified, thus set selection start to the beginning of the word
-      posAutoCompletion  = offset+1
-        
-         var wordAtCursor = wb.reverse      
-         
-        //println("sterg: wordAtCursor = "+wordAtCursor+" posAutoCompletion = "+posAutoCompletion)
-        
-        //    (line.substring( 0, dot - start ), start)
-          (wordAtCursor, posAutoCompletion)  
+           var pos = editor.getCaretPosition-1
+           var doc = editor.getDocument()
+
+           GlobalValues.methodNameSpecified = false
+           GlobalValues.selectionStart = -1
+
+           var exited = false
+           // take word part before cursor position
+           var wb = ""
+           var offset = pos
+           while (offset >= 0 && exited==false) {
+             var ch = doc.getText(offset, 1).charAt(0)
+             if (ch == '.') {
+               GlobalValues.methodNameSpecified = true;
+             if (GlobalValues.selectionStart == -1)
+                GlobalValues.selectionStart = offset+1;   // replace the text after the last '.'
+             }
+
+             var isalphaNumeric = ( ch >= 'a' && ch <='z')  || (ch >= 'A' && ch <='Z') || (ch >= '0' && ch <='9') || ch=='.'  || ch=='_' || ch=='$'
+             if (!isalphaNumeric)  exited=true
+             else {
+               wb = wb + ch
+               offset -= 1
+             }
+           }
+
+           GlobalValues.selectionBeginning = offset+1; // keep the identifier start for static members completion
+
+           if (GlobalValues.selectionStart == -1)  // a method name is not specified, thus set selection start to the beginning of the word
+           GlobalValues.selectionStart = pos+1
+
+           // take word part after cursor position
+           var wa = ""
+           var docLen = doc.getLength()
+           offset = pos+1
+           exited = false
+           while (offset < docLen && exited==false) {
+             var ch = doc.getText(offset, 1).charAt(0)
+             var isalphaNumeric = ( ch >= 'a' && ch <='z')  || (ch >= 'A' && ch <='Z') || (ch >= '0' && ch <='9') || ch=='.' || ch=='_' || ch=='$'
+             if (!isalphaNumeric)  exited=true
+             else {
+               wa = wa + ch
+               offset += 1
+             }
+           }
+
+           GlobalValues.selectionEnd = offset
+
+           //   form total word that is under caret position
+           var wordAtCursor = wb.reverse+wa
+
+          (wordAtCursor, posAutoCompletion)
         
          }
-      }
+      }  // close of val (cw,start)
       
 
   
-      val cwlen = cw.length()
-      val completions =  completer.complete( cw, cwlen )
+     val cwlen = cw.length()
+     val completions =  completer.complete( cw, cwlen )   // autocomplete with the Scala completer
      val candidates = completions.candidates.filterNot(_.isUniversal)
-
-
-     //var dcl = new javax.swing.DefaultListModel  // the model for the completion list
-    // var  clList = new javax.swing.JList(dcl)   // the completion's list
-    
-   //  GlobalValues.nameOfType = nameOfType  // keep class name in order to construct fully qualified names for accessing static members       
-     // register our specialized list cell renderer that displays static members in bold
-   //  clList.setCellRenderer(new javax.swing.FontCellRenderer())
-     
 
       var completionList = new java.util.ArrayList[String]
       
     // nothing to complete
    if( candidates.isEmpty )  return
-  else {
-    candidates.foreach { x =>
+  else {   // extract the names of the completion items from the CompletionCandidate class representation
+     var candidateLen = "CompletionCandidate(".length
+
+     candidates.foreach { x =>
       var xs = x.toString
-      var candidateLen = "CompletionCandidate(".length
       var xss = xs.substring(candidateLen, xs.length)
       var xname = xss.substring(0, xss.indexOf(","))
       completionList.add (xname)
       }
     }
-             
 
-             
            //  System.out.println("size of Completion List = "+completionList.size)
              
              scalaSciCommands.Inspect.displayCompletionList(cw, completionList)
