@@ -20,11 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScalaLab.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaLab.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaSciCommands/Inspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaSciCommands/Inspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalainterpreter/CompletionAction.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalainterpreter/CompletionAction.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid21676.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/makeImportsJShell.jshell" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/makeImportsScalaREPL.scalarepl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/NROps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/NROpsJNI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/compile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/nr3.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/testFFTs.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/JCUBLAS/jcublasTest.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/workWithJshellJava9.readme" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
