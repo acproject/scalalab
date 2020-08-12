@@ -42,7 +42,7 @@ public class GlobalValues
 {
 
     
-    static public   String  scalalabBuildVersion = "10 - August - 2020";
+    static public   String  scalalabBuildVersion = "12 - August - 2020";
    
     static public ScalaInterpreterPane globalInterpreterPane;  // the interpreter pane object which is the main interface to the Scala interpreter
     static public Vector <String> interpreterClassPathComponents = new Vector<>();  // the class path components of the main interpreter
@@ -166,15 +166,15 @@ public class GlobalValues
     static public  CompletionProvider provider;      // used for RSyntaxArea based code completion
     
     // enable/disable mouse motion listeners, mouse listeners control displaying the contexts of the variables when the mouse cursor is over them
-    static  public  boolean mouseMotionListenerForRSyntax = false;
-    static  public  boolean mouseMotionListenerForJSyntax = false;
+    static  public  boolean mouseMotionListenerForRSyntax = true;
+    static  public  boolean mouseMotionListenerForJSyntax = true;
     static  public  MouseMotionAdapter  jsyntaxMouseMotionAdapter;
     static  public  MouseMotionAdapter  rsyntaxMouseMotionAdapter;
     static  public  String  lastVariableUnderMouseCursor = "";    // in order to avoid redisplaying the same variable
     
 // accessing values for variables of all types vs. the normal behaving ones (i.e. primitive types and scalaSci types)
-    static  public  boolean getValuesForAllRSyntax = false;
-    static  public  boolean getValuesForAllJSyntax = false;
+    static  public  boolean getValuesForAllRSyntax = true;
+    static  public  boolean getValuesForAllJSyntax = true;
    
     
     static public  File  forHTMLHelptempFile;     // used for displaying html help files
@@ -213,10 +213,7 @@ public class GlobalValues
     public static final int MTJMat = 2;
     public static final int ApacheCommonMathsMat=3;
     public static final int JBLASMat = 4;
-    public static final int CUDAMat = 5;
-  
-    public static final int EIGENMat = 6;
-    public static final int D2Das1DMat = 7;
+    public static final int D2Das1DMat = 5;
     public static final int NotAnyImports = 14;
     
       
@@ -311,9 +308,6 @@ public class GlobalValues
                 case MTJMat: return "MTJ "; 
                 case ApacheCommonMathsMat:  return "Apache Commons"; 
                 case JBLASMat: return "JBLAS";  
-                case CUDAMat: return "CUDA";    
-              
-                case EIGENMat: return "EIGEN";    
 
                 case D2Das1DMat: return "D2Das1D";
                 
@@ -540,7 +534,9 @@ public class GlobalValues
             "import _root_.scalaSci.asynch.asynchSolve._\n"+
             "import _root_.scalaSci.asynch.asynchSvd._\n"+
             "import _root_.scalaSci.asynch.asynchMul._\n"+
-            
+
+             "import scala.language.postfixOps \n"+
+
             // some short types
             "type  A1D = Array[Double]\n"+
             "type  A2D = Array[Array[Double]]\n"+

@@ -1253,8 +1253,6 @@ public class scalaLab extends JFrame implements WindowListener, ActionListener {
                         interpreterType = "Apache Common Maths";
                     } else if (GlobalValues.interpreterTypeForPane == GlobalValues.JBLASMat) {
                         interpreterType = " JBLAS";
-                    } else if (GlobalValues.interpreterTypeForPane == GlobalValues.EIGENMat)  {
-                        interpreterType = " EIGEN";
                     } else if (GlobalValues.interpreterTypeForPane==GlobalValues.D2Das1DMat) {
                         interpreterType="D2Das1D";
                     }

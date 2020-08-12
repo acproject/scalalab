@@ -2,7 +2,7 @@
 val x = rand0(8, 8)  // create an EJML.Mat random matrix
 
 import org.ejml.simple.SimpleMatrix._   // static methods of  EJML SimpleMatrix class 
-val xsm = x.getNativeMatrixRef    // get a reference to the EJML SimpleMatrix, which  the scalaSci.EJML.Mat wraps
+val xsm = x.getLibraryMatrixRef    // get a reference to the EJML SimpleMatrix, which  the scalaSci.EJML.Mat wraps
 
 // demonstrating directly using the SimpleMatrix
 val sm20 = identity(20)   // create a SimpleMatrix with 1s at the diagonal

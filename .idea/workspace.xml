@@ -20,16 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/hs_err_pid21676.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/makeImportsJShell.jshell" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/makeImportsScalaREPL.scalarepl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/NROps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/NROpsJNI.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/compile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/nr3.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NROps/testFFTs.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/JCUBLAS/jcublasTest.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workWithJshellJava9.readme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScalaLab.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaLab.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/IO/HaykinDataRead.sssci" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/IO/HaykinDataRead.sssci.opt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/MatrixEJML/EJMLSimpleMatrix.sssci" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/MatrixEJML/EJMLSimpleMatrix.sssci" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/MatrixEJML/eigTest.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/bench/ClosureVsFunction1.sssci" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/bench/ClosureVsFunction1.sssci" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/rsyntaxEdit/ProcessWordAtCursorJSyntaxPane.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/rsyntaxEdit/ProcessWordAtCursorJSyntaxPane.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciCommands/displayOutputControl.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/cond.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/condRD2D.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/testEig.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/testSVD.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/vecExamples.sssci" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalainterpreter/PaneMouseMotionAdapter.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalainterpreter/PaneMouseMotionAdapter.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaxy/debug/package.scala" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,10 +132,10 @@
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
     <state x="713" y="668" key="SettingsEditor/0.0.3840.2084@0.0.3840.2084" timestamp="1593167325515" />
-    <state x="1057" y="382" width="1023" height="1368" key="find.popup" timestamp="1597058709917">
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup" timestamp="1597240942731">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>
-    <state x="1057" y="382" width="1023" height="1368" key="find.popup/0.0.3840.2084@0.0.3840.2084" timestamp="1597058709917" />
+    <state x="1057" y="382" width="1023" height="1368" key="find.popup/0.0.3840.2084@0.0.3840.2084" timestamp="1597240942731" />
     <state x="592" y="760" key="new project wizard" timestamp="1589968331115">
       <screen x="0" y="0" width="3840" height="2084" />
     </state>

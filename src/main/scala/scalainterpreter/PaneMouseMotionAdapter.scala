@@ -52,6 +52,8 @@ class PaneMouseMotionAdapter()  extends MouseMotionAdapter {
 
     if (currentWordAtCursor != wordAtCursor)  {
        currentWordAtCursor = wordAtCursor
+
+//      System.out.println("word at cursor = "+wordAtCursor)
        
     if (wordAtCursor.trim.length > 0)
       rsyntaxEdit.ProcessWordAtCursorJSyntaxPane.processWordAtCursorJSyntaxPane(wordAtCursor)

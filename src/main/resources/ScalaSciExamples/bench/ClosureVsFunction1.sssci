@@ -12,7 +12,7 @@ while  (k< N) {
   
 // 0.17 sec
 
-
+// Groovy Code here, do not execute with Scala!!!
 
  f = { a -> return (double)a*(double)a*(double)a}
 
