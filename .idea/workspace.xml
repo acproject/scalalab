@@ -21,22 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f2d6d69e-6b7c-449f-8457-cb968c90c9be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScalaLab.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaLab.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/Interpreter/GlobalValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scalaExec/scalaLab/scalaLab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/IO/HaykinDataRead.sssci" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/IO/HaykinDataRead.sssci.opt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/MatrixEJML/EJMLSimpleMatrix.sssci" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/MatrixEJML/EJMLSimpleMatrix.sssci" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/Matrix/MatrixEJML/eigTest.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/bench/ClosureVsFunction1.sssci" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ScalaSciExamples/bench/ClosureVsFunction1.sssci" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/rsyntaxEdit/ProcessWordAtCursorJSyntaxPane.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/rsyntaxEdit/ProcessWordAtCursorJSyntaxPane.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciCommands/displayOutputControl.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/cond.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/condRD2D.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/testEig.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/testSVD.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaSciTests/vecExamples.sssci" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalainterpreter/PaneMouseMotionAdapter.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/scalainterpreter/PaneMouseMotionAdapter.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/scalaxy/debug/package.scala" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
